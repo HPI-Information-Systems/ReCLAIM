@@ -1,0 +1,25 @@
+[tool.poetry]
+name = "scraper"
+version = "0.1.0"
+description = ""
+authors = [" BP2023FN1 <bp2023fn1@hpi.de>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+selenium = "^4.16.0"
+bs4 = "^0.0.2"
+beautifulsoup4 = "^4.12.3"
+pylint = "^3.0.3"
+pre-commit = "^3.7.0"
+requests = "^2.32.2"
+pandas = "^2.2.2"
+ipykernel = "^6.29.4"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.plugins."poetry-dynamic-versioning"]
+include = "**"

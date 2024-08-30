@@ -1,0 +1,261 @@
+{
+    "transfer_event": {
+        "semantic": "The transfer event is used when a cultural asset has been transferred from one place to another or has changed ownership without being explicitly confiscated, acquired or restituted.",
+        "trigger_words": [
+            "transferred",
+            "brought",
+            "lent",
+            "given",
+            "sent",
+            "received"
+        ],
+        "fields": {
+            "extent": {
+                "type": "string",
+                "description": "Text passage that most expressively describes this particular event."
+            },
+            "date": {
+                "type": "string | null",
+                "description": "Date of the transfer - if no unique assignment to departure_date or arrival_date is possible."
+            },
+            "departure_date": {
+                "type": "string | null",
+                "description": "Date on which the cultural asset was departured from the original location."
+            },
+            "arrival_date": {
+                "type": "string | null",
+                "description": "Date on which the cultural asset arrived at the new location."
+            },
+            "physical_description": {
+                "type": "string | null",
+                "description": "Description of the physical state, appearance or content - if no unique assignment to physical_description_before or physical_description_after is possible."
+            },
+            "physical_description_before": {
+                "type": "string | null",
+                "description": "Description of the physical state, appearance or content before the transfer."
+            },
+            "physical_description_after": {
+                "type": "string | null",
+                "description": "Description of the physical state, appearance or content after the transfer."
+            },
+            "to_location": {
+                "type": "string | null",
+                "description": "Name of location to which the cultural asset was transferred."
+            },
+            "from_location": {
+                "type": "string | null",
+                "description": "Name of location from which the cultural asset was transferred."
+            },
+            "by_legal_entity": {
+                "type": "string | null",
+                "description": "Name of legal entity, who transferred the cultural asset."
+            },
+            "identified_by": {
+                "type": "string | null",
+                "description": "Name of legal entity, who identified the cultural asset at destination."
+            },
+            "possessor_before": {
+                "type": "string | null",
+                "description": "Name of legal entity, who possessed the cultural asset before the transfer."
+            },
+            "possessor_after": {
+                "type": "string | null",
+                "description": "Name of legal entity, who possessed the cultural asset after the transfer."
+            }
+        }
+    },
+    "deposit_event": {
+        "semantic": "The deposit event is used when a cultural asset has been deposited at a specific location or discovered at a certain place or in certain ownership. This often happened before or after transfer events.",
+        "trigger_words": [
+            "deposited",
+            "stored"
+        ],
+        "fields": {
+            "extent": {
+                "type": "string",
+                "description": "Text passage that most expressively describes this particular event."
+            },
+            "date": {
+                "type": "string | null",
+                "description": "Date of the deposit."
+            },
+            "physical_description": {
+                "type": "string | null",
+                "description": "Description of the physical state, appearance or content when deposited."
+            },
+            "at_location": {
+                "type": "string | null",
+                "description": "Name of location at which the cultural asset was deposited."
+            },
+            "possessor": {
+                "type": "string | null",
+                "description": "Name of legal entity, who possessed the cultural asset when deposited."
+            },
+            "deposited_by": {
+                "type": "string | null",
+                "description": "Name of legal entity, who deposited the cultural asset."
+            },
+            "depot_number": {
+                "type": "string | null",
+                "description": "Number of the depot, at which the cultural asset was deposited."
+            },
+            "collected_in": {
+                "type": "string | null",
+                "description": "Name of collection, the cultural asset was part of when deposited."
+            }
+        }
+    },
+    "confiscation_event": {
+        "semantic": "The confiscation event is used, when the cultural asset was confiscated by a legal entity. This means that the cutltural asset was taken from its previous owner without consent. In context of the second world war, this mostly happened, when a cultural asset was transferred to Germany from other countries.",
+        "trigger_words": [
+            "confiscated",
+            "taken"
+        ],
+        "fields": {
+            "extent": {
+                "type": "string",
+                "description": "Text passage that most expressively describes this particular event."
+            },
+            "date": {
+                "type": "string | null",
+                "description": "Date of the confiscation."
+            },
+            "physical_description": {
+                "type": "string | null",
+                "description": "Description of the physical state, appearance or content when confiscated."
+            },
+            "at_location": {
+                "type": "string | null",
+                "description": "Name of location at which the cultural asset was confiscated."
+            },
+            "from_legal_entity": {
+                "type": "string | null",
+                "description": "Name of legal entity, from whom the cultural asset was confiscated."
+            },
+            "from_collection": {
+                "type": "string | null",
+                "description": "Name of collection, the cultural asset was confiscated from."
+            },
+            "by_legal_entity": {
+                "type": "string | null",
+                "description": "Name of legal entity, who confiscated the cultural asset."
+            },
+            "to_collection": {
+                "type": "string | null",
+                "description": "Name of collection, the cultural asset was part of after confiscation."
+            }
+        }
+    },
+    "acquisition_event": {
+        "semantic": "The acquisition event is used, when the cultural asset was acquired by a legal entity for some kind of compensation and changed ownership.",
+        "trigger_words": [
+            "acquired",
+            "purchased",
+            "bought",
+            "compensated",
+            "exchanged"
+        ],
+        "fields": {
+            "extent": {
+                "type": "string",
+                "description": "Text passage that most expressively describes this particular event."
+            },
+            "date": {
+                "type": "string | null",
+                "description": "Date of the acquisition."
+            },
+            "physical_description": {
+                "type": "string | null",
+                "description": "Description of the physical state, appearance or content when acquired."
+            },
+            "acquisition_cost": {
+                "type": "string | null",
+                "description": "Price of the acquisition."
+            },
+            "at_location": {
+                "type": "string | null",
+                "description": "Name of location at which the cultural asset was acquired."
+            },
+            "from_legal_entity": {
+                "type": "string | null",
+                "description": "Name of legal entity, from whom the cultural asset was acquired."
+            },
+            "from_collection": {
+                "type": "string | null",
+                "description": "Name of collection, the cultural asset was part of before acquisition."
+            },
+            "by_legal_entity": {
+                "type": "string | null",
+                "description": "Name of legal entity, who acquired the cultural asset."
+            },
+            "to_collection": {
+                "type": "string | null",
+                "description": "Name of collection, the cultural asset was part of after acquisition."
+            },
+            "through_legal_entity": {
+                "type": "string | null",
+                "description": "Name of legal entity, who acted as an intermediary in the acquisition."
+            }
+        }
+    },
+    "restitution_event": {
+        "semantic": "The restitution event is used, when the cultural asset was restituted to a legal entity, who was the rightful owner of the cultural asset.",
+        "trigger_words": [
+            "restituted",
+            "returned",
+            "given back",
+            "reclaimed",
+            "brought back"
+        ],
+        "fields": {
+            "extent": {
+                "type": "string",
+                "description": "Text passage that most expressively describes this particular event."
+            },
+            "date": {
+                "type": "string | null",
+                "description": "Date of the transfer - if no unique assignment to departure_date or arrival_date is possible."
+            },
+            "departure_date": {
+                "type": "string | null",
+                "description": "Date on which the cultural asset was departured from the original location."
+            },
+            "arrival_date": {
+                "type": "string | null",
+                "description": "Date on which the cultural asset arrived at the new location."
+            },
+            "physical_description": {
+                "type": "string | null",
+                "description": "Description of the physical state, appearance or content - if no unique assignment to physical_description_before or physical_description_after is possible."
+            },
+            "physical_description_before": {
+                "type": "string | null",
+                "description": "Description of the physical state, appearance or content before the restitution."
+            },
+            "physical_description_after": {
+                "type": "string | null",
+                "description": "Description of the physical state, appearance or content after the restitution."
+            },
+            "to_location": {
+                "type": "string | null",
+                "description": "Name of location to which the cultural asset was restituted."
+            },
+            "from_location": {
+                "type": "string | null",
+                "description": "Name of location from which the cultural asset was restituted."
+            },
+            "by_legal_entity": {
+                "type": "string | null",
+                "description": "Name of legal entity, who transferred the cultural asset."
+            },
+            "possessor_before": {
+                "type": "string | null",
+                "description": "Name of legal entity, who possessed the cultural asset before the restitution."
+            },
+            "possessor_after": {
+                "type": "string | null",
+                "description": "Name of legal entity, who possessed the cultural asset after the restitution."
+            }
+        }
+    }
+}

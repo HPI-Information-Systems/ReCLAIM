@@ -1,0 +1,33 @@
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix jdcrp: <https://graph.jdcrp.org/schema#> .
+
+jdcrp:CulturalAssetEvent
+	a               rdfs:Class ;
+	rdfs:subClassOf jdcrp:Event .
+
+jdcrp:physicalDescription
+	a            rdf:Property ;
+	rdfs:domain  jdcrp:CulturalAssetEvent ;
+	rdfs:range   xsd:string ;
+	rdfs:label   "physical description" ;
+	rdfs:comment "The physical state of the cultural asset at the time of the event" .
+
+jdcrp:relativeOrder
+	a            rdf:Property ;
+	rdfs:domain  jdcrp:CulturalAssetEvent ;
+	rdfs:range   xsd:integer ;
+	rdfs:label   "relative order" ;
+	rdfs:comment "The relative temporal ordering of the events of the cultural asset" .
+
+jdcrp:affectedCulturalAsset
+	a           rdf:Property ;
+	rdfs:domain jdcrp:CulturalAssetEvent ;
+	rdfs:range  jdcrp:CulturalAsset .
+
+jdcrp:withInvolvementOf
+	a		   rdf:Property ;
+	rdfs:domain jdcrp:CulturalAssetEvent ;
+	rdfs:range  jdcrp:Person ;
+	jdcrp:role	xsd:string .

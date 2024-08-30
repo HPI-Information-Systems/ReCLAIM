@@ -1,0 +1,36 @@
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix jdcrp: <https://graph.jdcrp.org/schema#> .
+
+jdcrp:ConfiscationEvent
+	a               rdfs:Class ;
+	rdfs:subClassOf jdcrp:CulturalAssetEvent .
+
+jdcrp:atLocation
+	a            rdf:Property ;
+	rdfs:domain  jdcrp:ConfiscationEvent ;
+	rdfs:range   jdcrp:Location ;
+	rdfs:label   "at location" ;
+	rdfs:comment "The location at which the cultural was confiscated" .
+
+jdcrp:byLegalEntity
+	a            rdf:Property ;
+	rdfs:domain  jdcrp:ConfiscationEvent ;
+	rdfs:range   jdcrp:LegalEntity ;
+	rdfs:label   "by legal entity" ;
+	rdfs:comment "The legal entity that confiscated the cultural asset" .
+
+jdcrp:fromLegalEntity
+	a            rdf:Property ;
+	rdfs:domain  jdcrp:ConfiscationEvent ;
+	rdfs:range   jdcrp:Person ;
+	rdfs:label   "from legal entity" ;
+	rdfs:comment "The legal entity from whom the cultural asset was confiscated" .
+
+jdcrp:fromCollection
+	a            rdf:Property ;
+	rdfs:domain  jdcrp:ConfiscationEvent ;
+	rdfs:range   jdcrp:Collection ;
+	rdfs:label   "from collection" ;
+	rdfs:comment "The collection from which the cultural asset was confiscated" .

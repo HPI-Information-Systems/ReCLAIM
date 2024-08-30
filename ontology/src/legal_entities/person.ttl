@@ -1,0 +1,88 @@
+@prefix rdfs:      <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix jdcrp:     <https://graph.jdcrp.org/schema#> .
+@prefix shape:     <https://graph.jdcrp.org/schema#> .
+@prefix xsd:       <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdf:       <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+
+jdcrp:Person
+	a               rdfs:Class ;
+	rdfs:subClassOf jdcrp:LegalEntity .
+
+# Note: If you only have a combined name, use "name" inherited from SourceLegalEntity
+
+jdcrp:firstName
+	a            rdf:Property ;
+	rdfs:domain  jdcrp:Person ;
+	rdfs:range   xsd:string ;
+	rdfs:label   "first name" ;
+	rdfs:comment "The first name of this person" .
+
+jdcrp:lastName
+	a            rdf:Property ;
+	rdfs:domain  jdcrp:Person ;
+	rdfs:range   xsd:string ;
+	rdfs:label   "last name" ;
+	rdfs:comment "The last name of this person" .
+
+jdcrp:pseudonym
+	a            rdf:Property ;
+	rdfs:domain  jdcrp:Person ;
+	rdfs:range   xsd:string ;
+	rdfs:label   "pseudonym" ;
+	rdfs:comment "The pseudonym, nickname or artist's name of this person" .
+
+jdcrp:historyDescription
+	a            rdf:Property ;
+	rdfs:domain  jdcrp:Person ;
+	rdfs:range   xsd:string ;
+	rdfs:label   "history description" ;
+	rdfs:comment "An unstructured, textual description of this person's history" .
+
+jdcrp:birthDate
+	a            rdf:Property ;
+	rdfs:domain  jdcrp:Person ;
+	rdfs:range   xsd:string ;
+	rdfs:label   "birth date" ;
+	rdfs:comment "The date of birth of this person, possibly as an unstructured string" .
+
+jdcrp:structuredBirthDate
+	a            rdf:Property ;
+	rdfs:domain  jdcrp:Person ;
+	rdfs:range   xsd:date ;
+	rdfs:label   "structured birth date" ;
+	rdfs:comment "The date of birth of this person, as a structured date" .
+
+jdcrp:bornInLocation
+	a            rdf:Property ;
+	rdfs:domain  jdcrp:Person ;
+	rdfs:range   jdcrp:Location ;
+	rdfs:label   "birth place" ;
+	rdfs:comment "The location where this person was born" .
+
+jdcrp:deathDate
+	a            rdf:Property ;
+	rdfs:domain  jdcrp:Person ;
+	rdfs:range   xsd:string ;
+	rdfs:label   "death date" ;
+	rdfs:comment "The date of death of this person, possibly as an unstructured string" .
+
+jdcrp:lifetime
+	a            rdf:Property ;
+	rdfs:domain  jdcrp:Person ;
+	rdfs:range   xsd:string ;
+	rdfs:label   "lifetime" ;
+	rdfs:comment "The time at which this person was generally alive or active, possibly as an unstructured string" .
+
+jdcrp:structuredDeathDate
+	a            rdf:Property ;
+	rdfs:domain  jdcrp:Person ;
+	rdfs:range   xsd:date ;
+	rdfs:label   "structured death date" ;
+	rdfs:comment "The date of death of this person, as a structured date" .
+
+jdcrp:diedInLocation
+	a            rdf:Property ;
+	rdfs:domain  jdcrp:Person ;
+	rdfs:range   jdcrp:Location ;
+	rdfs:label   "death place" ;
+	rdfs:comment "The location where this person died" .

@@ -1,0 +1,28 @@
+{
+  "name": "kunstgraph",
+  "private": true,
+  "scripts": {
+    "build": "turbo build",
+    "dev": "turbo dev",
+    "lint": "turbo lint",
+    "format": "prettier --write \"**/*.{ts,tsx,md}\""
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.45.3",
+    "@types/node": "^20.14.13",
+    "prettier": "^3.3.3",
+    "turbo": "^2.0.9"
+  },
+  "packageManager": "npm@10.5.0",
+  "workspaces": [
+    "backend/",
+    "frontend/",
+    "etl/",
+    "ontology/",
+    "matching/",
+    "e2e_tests/"
+  ],
+  "engines": {
+    "node": ">=18"
+  }
+}

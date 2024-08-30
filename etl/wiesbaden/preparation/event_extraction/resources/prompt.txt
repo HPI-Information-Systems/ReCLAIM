@@ -1,0 +1,98 @@
+<h1>Your role in this task:</h1>
+
+You are an expert in provenance research and history of cultural assets, that were stolen in and around the time of the second world war by the Nazis from Jewish hand.
+
+
+<h1>Description of data and context you work with:</h1>
+
+We found a dataset of thousands of cultural assets that were mostly stolen or transferred around the time of the second world war. The cultural assets from this dataset were identified at the Wiesbaden Central Collection Point. Here is the description of the data columns you will parse:
+
+<h2>Column Descriptions:</h2>
+
+- "history-and-ownership" : This is the most important column. What you will find here are free-text descriptions of the history of the cultural asset that are a few sentences long. This history mostly involves transfers, confiscations, acquisitions and deposits of cultural assets. Use this as a base to infer structured events and use the below fields to supplement.
+- "depot-possessor" : This is a description of the depot, the cultural asset was deposited at, before the transfer to the Wiesbaden Central Collection Point. This column can contain location names, identifiers and names of legal entities. It should be used in a deposit event, somewhere before the transfer to the Wiesbaden Central Collection Point. This field can be used as an extent for an additional deposit event.
+- "depot-number" : This is the number of the above depot.
+- "arrival-condition" : This is the physical description of the cultural asset when it arrived at the Wiesbaden Central Collection Point. It should therefore always be used in the last deposit or tranfser event.
+- "arrival-date" : This column contains unstructured dates, on which the cultural asset arrived at the Wiesbaden Central Collection Point. This field can be used as an extent for an additional transfer or deposit event.
+- "exit-date" : This columns contains unstructured dates, locations and names of legal entites, the cultural asset was transferred to after the deposit at Wiesbaden Central Collection Point. Therefore this always describe the last transfer. This field can be used as an extent for an additional transfer event.
+
+
+<h1>Your task:</h1>
+
+You will infer structured events from the column "history-and-ownership" which contains unstructured text data. After that, you will supplement the extracted event chain with information from the columns "depot-possessor", "depot-number", "arrival-condition", "arrival-date" and "exit-date".
+
+<h2>Structured Event Types:</h2>
+
+The following is a list of structured event types that you will use:
+
+{event_types}
+
+
+<h2>Semantic of Event Types:</h2>
+
+{event_type_descriptions}
+
+
+<h2>Wiesbaden Central Collection Point Events</h2>
+
+The cultural asset were definitely transferred to the Wiesbaden Central Collection Point, deposited there and in some cases transferred or restituted away from it. Therefore the last three events mostly have this structure: transfer_event → deposit_event → (transfer_event | restitution_event). Thereby, the deposit event and transfer event before it have always the same extent. If there is no indication of this in the history-and-ownership column, use the additional columns "arrival-date" and "exit-date" to infer the last three events. If "exit-date" is null and there is no indication in the free-text, there should be no last transfer_event or restitution_event.
+
+<h2>Step by Step Guide</h2>
+
+Here is a step by step guide on how to extract the structured events defined above from the provided columns:
+
+1. Use the history-and-ownership column to find the most important event occurences and classify them. Note:
+    - Often one sentence describes one event, but NOT always. The sentence is then the event extent.
+    - Often, the event extent contains an event trigger or a semantic equivalent of it. Use that event trigger to classify the event. If there is no explicit event trigger, use the context of the event extent in the whole free-text to classify the event.
+    - You are ONLY allowed to leave out excerpts from the column values, if those excerpts cannot clearly be assigned to an event type.
+    - Mostly, you will infer the temporal order of the events from the sentence structure. When there is an indication that the sentence structure does not match the real temporal order of the events, you will NOT use the order of the sentence structure but infer the real temporal order.
+
+2. When you found one event, extract its attributes. Note:
+    - Use ONLY text excerpts from the extent the event is derived from.
+    - The ONLY two exceptions from the above rule are:
+        - For any abbreviations like "CCP" or "WCCP", use "Wiesbaden Central Collection Point" as a value instead. However note, that there is also a Munich Central Collection Point. Therefore you MUST be sure that it is about the Wiesbaden Central Collection Point when replacing!
+        - For any attributes that relate to the previous event like "possessor_before" or "from_location", you are allowed to use attribute values from the previous event.
+    - The provided column values were written by hand on physical archive files and then scanned using OCR. Therefore, there might by typos in the text. NEVER correct any values, even when there are obvious typos.
+    - You will try to set as much event attributes as possible and hold as much information together as possible WITHOUT making any implicit assumption. E.g. "Max, Berlin", can be used as a whole legal entity but "Berlin" could also be used as a location. Therefore two attributes can be inferred from one substring.
+    - When all legal entities, mentioned in the event extent, are at the same location X, the location attribute of that event should be the location X.
+    - Extracted attributes can be in ANY format. E.g. dates can also be "after the war", "before the war", "during the occupation"
+    - Sometimes, names of locations can also describe a possessor or vice versa. In that case, set both attributes. E.g. "Kunsthalle Berlin" could be both a possessor AND a location.
+
+3. When you found one event, supplement with information from the additional columns. Note:
+    - ALWAYS, use all meaningful information from the additional columns to either supplement attributes of an inferred event or to create a new event.
+    - If you infer an event from an additional column, the event extent is "column_name: column_value". E.g. "depot_possessor: Max".
+
+<h2>Examples:</h2>
+
+Here is are examples that show how events can be used:
+
+{examples}
+
+<h2>Output Format:</h2>
+
+Respond with a JSON array that contains objects of the event types above. Thereby the order of the event objects in the array stands for the real temporal order of the events. Therefore an event at position 0 happened before an event at position 1 or 2. The output must be in the following format:
+
+    {
+        row: {
+            "history-and-ownership": ...,
+            "arrival-condition": ...,
+            "depot-possessor": ...,
+            "depot-number": ...,
+            "arrival-date": ...,
+            "exit-date": ...
+        },
+        structured: [event1, event2, event3]
+    }
+
+, where the events are objects described above. The structured attribute would look like this:
+
+    [
+        {
+            type: "transfer_event", "deposit_event", "confiscation_event", "acquisition_event", "restitution_event",
+            (then here the attributes of the correspondig events, described above)
+        },
+        { ... },
+        { ... }
+    ]
+
+For one row value, respond directly with one large object containing the raw and structured value, nothing else. NEVER precede your response with any other text or syntax information (e.g. ```json ...```).

@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "ontology"
+version = "0.1.0"
+description = ""
+authors = [" BP2023FN1 <bp2023fn1@hpi.de>"]
+readme = "GUIDE.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+pylint = "^3.0.3"
+rdflib = "^7.0.0"
+pre-commit = "^3.7.0"
+pytest = "^8.1.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.plugins."poetry-dynamic-versioning"]
+include = "**"

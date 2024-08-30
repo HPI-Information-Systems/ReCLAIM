@@ -1,0 +1,241 @@
+@prefix rdfs:           <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix wd:             <https://www.wikidata.org/wiki/> .
+@prefix jdcrp:          <https://graph.jdcrp.org/schema#> .
+@prefix Classification: <https://graph.jdcrp.org/taxonomies/classification#> .
+
+Classification:unknown
+	a                 jdcrp:Classification ;
+	jdcrp:name        "unknown" ;
+	jdcrp:wikidataUri wd:Q24238356 .
+
+Classification:antiquities
+	a                 jdcrp:Classification ;
+	jdcrp:name        "antiquities" ;
+	jdcrp:wikidataUri wd:Q2906114 ;
+	jdcrp:subClassificationOf Classification:unknown .
+
+Classification:militaryTrophies
+	a                 jdcrp:Classification ;
+	jdcrp:name        "military trophies" ;
+	jdcrp:wikidataUri wd:Q1517746 ;
+	jdcrp:subClassificationOf Classification:unknown .
+
+Classification:leatherwork
+	a                 jdcrp:Classification ;
+	jdcrp:name        "leatherwork" ;
+	jdcrp:wikidataUri wd:Q79504355 ;
+	jdcrp:subClassificationOf Classification:unknown .
+
+Classification:ceramics
+	a                 jdcrp:Classification ;
+	jdcrp:name        "ceramics" ;
+	jdcrp:wikidataUri wd:Q45621 ;
+	jdcrp:subClassificationOf Classification:unknown .
+
+Classification:glass
+	a                 jdcrp:Classification ;
+	jdcrp:name        "glass" ;
+	jdcrp:wikidataUri wd:Q11469 ;
+	jdcrp:subClassificationOf Classification:unknown .
+
+Classification:jewelry
+	a                 jdcrp:Classification ;
+	jdcrp:name        "jewelry" ;
+	jdcrp:wikidataUri wd:Q2142903 ;
+	jdcrp:subClassificationOf Classification:unknown .
+
+Classification:religiousObject
+	a                 jdcrp:Classification ;
+	jdcrp:name        "religious object" ;
+	jdcrp:wikidataUri wd:Q12910132 ;
+	jdcrp:subClassificationOf Classification:unknown .
+
+Classification:judaica
+	a                 jdcrp:Classification ;
+	jdcrp:name        "judaica" ;
+	jdcrp:wikidataUri wd:Q452298 ;
+	jdcrp:subClassificationOf Classification:religiousObject .
+
+Classification:musicalInstrument
+	a                 jdcrp:Classification ;
+	jdcrp:name        "musical instrument" ;
+	jdcrp:wikidataUri wd:Q34379 ;
+	jdcrp:subClassificationOf Classification:unknown .
+
+Classification:lightingDevice
+	a                 jdcrp:Classification ;
+	jdcrp:name        "lighting device" ;
+	jdcrp:wikidataUri wd:Q111324721 ;
+	jdcrp:subClassificationOf Classification:unknown .
+
+Classification:furniture
+	a                 jdcrp:Classification ;
+	jdcrp:name        "furniture" ;
+	jdcrp:wikidataUri wd:Q14745 ;
+	jdcrp:subClassificationOf Classification:decorativeArts .
+
+Classification:decorativeArts
+	a                 jdcrp:Classification ; # This classification was added to match the arttype "decorative arts" from the err-data.
+	jdcrp:name        "decorative arts" ;
+	jdcrp:wikidataUri wd:Q631931 ;
+	jdcrp:subClassificationOf Classification:unknown .
+
+Classification:scientificCollection
+	a                 jdcrp:Classification ;
+	jdcrp:name        "scientific collection" ;
+	jdcrp:wikidataUri wd:Q1438125 ;
+	jdcrp:subClassificationOf Classification:unknown .
+
+Classification:numismaticCollection
+	a                 jdcrp:Classification ;
+	jdcrp:name        "numismatic collection" ;
+	jdcrp:wikidataUri wd:Q1232974 ;
+	jdcrp:subClassificationOf Classification:unknown .
+
+Classification:archive
+	a                 jdcrp:Classification ;
+	jdcrp:name        "archive" ;
+	jdcrp:wikidataUri wd:Q166118 ;
+	jdcrp:subClassificationOf Classification:writtenWork .
+
+Classification:metalwork
+	a                 jdcrp:Classification ;
+	jdcrp:name        "metalwork" ;
+	jdcrp:wikidataUri wd:Q953045 ;
+	jdcrp:subClassificationOf Classification:decorativeArts , Classification:religiousObject .
+
+
+### artwork
+Classification:artwork
+	a                 jdcrp:Classification ;
+	jdcrp:name        "artwork" ;
+	jdcrp:wikidataUri wd:Q838948 ;
+	jdcrp:subClassificationOf Classification:unknown .
+
+Classification:picture
+	a                         jdcrp:Classification ;
+	jdcrp:name                "picture" ;
+	jdcrp:wikidataUri         wd:Q478798 ;
+	jdcrp:subClassificationOf Classification:artwork .
+
+Classification:painting
+	a                         jdcrp:Classification ;
+	jdcrp:name                "painting" ;
+	jdcrp:wikidataUri         wd:Q3305213 ;
+	jdcrp:subClassificationOf Classification:picture .
+
+Classification:miniature
+	a                         jdcrp:Classification ;
+	jdcrp:name                "miniature" ;
+	jdcrp:wikidataUri         wd:Q282129 ;
+	jdcrp:subClassificationOf Classification:painting .
+
+Classification:worksOnPaper
+	a                         jdcrp:Classification ;
+	jdcrp:name                "works on paper" ;
+	jdcrp:wikidataUri         wd:Q111609766 ;
+	jdcrp:subClassificationOf Classification:picture .
+
+Classification:drawing
+	a                         jdcrp:Classification ;
+	jdcrp:name                "drawing" ;
+	jdcrp:wikidataUri         wd:Q93184 ;
+	jdcrp:subClassificationOf Classification:picture .
+
+Classification:pencilDrawing
+	a                         jdcrp:Classification ;
+	jdcrp:name                "pencil drawing" ;
+	jdcrp:wikidataUri         wd:Q6791777 ;
+	jdcrp:subClassificationOf Classification:drawing .
+
+Classification:print
+	a                         jdcrp:Classification ;
+	jdcrp:name                "print" ;
+	jdcrp:wikidataUri         wd:Q11060274 ;
+	jdcrp:subClassificationOf Classification:worksOnPaper .
+
+Classification:engravingPrint
+	a                         jdcrp:Classification ;
+	jdcrp:name                "engraving print" ;
+	jdcrp:wikidataUri         wd:Q11835431 ;
+	jdcrp:subClassificationOf Classification:print .
+
+Classification:etchingPrint
+	a                         jdcrp:Classification ;
+	jdcrp:name                "etching print" ;
+	jdcrp:wikidataUri         wd:Q18218093 ;
+	jdcrp:subClassificationOf Classification:print .
+
+Classification:lithography
+	a                         jdcrp:Classification ;
+	jdcrp:name                "lithography" ;
+	jdcrp:wikidataUri         wd:Q133036 ;
+	jdcrp:subClassificationOf Classification:print .
+
+Classification:sculpture
+	a                         jdcrp:Classification ;
+	jdcrp:name                "sculpture" ;
+	jdcrp:wikidataUri         wd:Q860861 ;
+	jdcrp:subClassificationOf Classification:artwork .
+
+Classification:bust
+	a                         jdcrp:Classification ;
+	jdcrp:name                "bust" ;
+	jdcrp:wikidataUri         wd:Q17489160 ;
+	jdcrp:subClassificationOf Classification:sculpture .
+
+Classification:woodwork
+	a                         jdcrp:Classification ;
+	jdcrp:name                "woodwork" ;
+	jdcrp:wikidataUri         wd:Q60734095 ;
+	jdcrp:subClassificationOf Classification:sculpture, Classification:decorativeArts .
+
+### textile
+Classification:textile
+	a                 jdcrp:Classification ;
+	jdcrp:name        "textile" ;
+	jdcrp:wikidataUri wd:Q28823 ;
+	jdcrp:subClassificationOf Classification:decorativeArts .
+
+Classification:tapestry
+	a                         jdcrp:Classification ;
+	jdcrp:name                "tapestry" ;
+	jdcrp:wikidataUri         wd:Q184296 ;
+	jdcrp:subClassificationOf Classification:textile .
+
+### written work
+Classification:writtenWork
+	a                 jdcrp:Classification ;
+	jdcrp:name        "written work" ;
+	jdcrp:wikidataUri wd:Q47461344 ;
+	jdcrp:subClassificationOf Classification:unknown .
+
+Classification:incunabula
+	a                         jdcrp:Classification ;
+	jdcrp:name                "incunabula" ;
+	jdcrp:wikidataUri         wd:Q216665 ;
+	jdcrp:subClassificationOf Classification:writtenWork .
+
+Classification:manuscript
+	a                         jdcrp:Classification ;
+	jdcrp:name                "manuscript" ;
+	jdcrp:wikidataUri         wd:Q87167 ;
+	jdcrp:subClassificationOf Classification:writtenWork .
+
+Classification:book
+	a                         jdcrp:Classification ;
+	jdcrp:name                "book" ;
+	jdcrp:wikidataUri         wd:Q571 ;
+	jdcrp:subClassificationOf Classification:writtenWork .
+
+Classification:printedBook
+	a                         jdcrp:Classification ;
+	jdcrp:name                "printed book" ;
+	jdcrp:wikidataUri         wd:Q11396303 ;
+	jdcrp:subClassificationOf Classification:book .
+
+Classification:codex
+	a                         jdcrp:Classification ;
+	jdcrp:name                "codex" ;
+	jdcrp:wikidataUri         wd:Q213924 ;
+	jdcrp:subClassificationOf Classification:writtenWork .

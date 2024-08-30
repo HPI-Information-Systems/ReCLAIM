@@ -1,0 +1,9 @@
+{
+  "name": "@kunstgraph/etl",
+  "version": "0.0.0",
+  "scripts": {
+    "lint": "poetry run pylint .",
+    "test": "poetry run pytest .",
+    "install": "poetry install"
+  }
+}

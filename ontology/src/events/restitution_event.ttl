@@ -1,0 +1,22 @@
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix jdcrp: <https://graph.jdcrp.org/schema#> .
+
+jdcrp:RestitutionEvent
+	a               rdfs:Class ;
+	rdfs:subClassOf jdcrp:CulturalAssetEvent .
+
+jdcrp:atLocation
+	a            rdf:Property ;
+	rdfs:domain  jdcrp:RestitutionEvent ;
+	rdfs:range   jdcrp:Location ;
+	rdfs:label   "at location" ;
+	rdfs:comment "The location at which the cultural was restituted" .
+
+jdcrp:restitutedToLegalEntity
+	a            rdf:Property ;
+	rdfs:domain  jdcrp:RestitutionEvent ;
+	rdfs:range   jdcrp:LegalEntity ;
+	rdfs:label   "to person" ;
+	rdfs:comment "The person or institution to whom the cultural asset was restituted" .

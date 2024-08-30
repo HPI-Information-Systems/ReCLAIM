@@ -1,0 +1,64 @@
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix jdcrp: <https://graph.jdcrp.org/schema#> .
+
+jdcrp:Location
+	a               rdfs:Class ;
+	rdfs:subClassOf jdcrp:Entity .
+
+jdcrp:partOf
+	a            rdf:Property ;
+	rdfs:domain  jdcrp:Location ;
+	rdfs:range   jdcrp:Location ;
+	rdfs:label   "partOf" ;
+	rdfs:comment "Another location that this location is entirely part of" .
+
+jdcrp:description
+	a            rdf:Property ;
+	rdfs:domain  jdcrp:Location ;
+	rdfs:range   xsd:string ;
+	rdfs:label   "description" ;
+	rdfs:comment "A textual description of the location" .
+
+jdcrp:street
+	a            rdf:Property ;
+	rdfs:domain  jdcrp:Location ;
+	rdfs:range   xsd:string ;
+	rdfs:label   "street" ;
+	rdfs:comment "The street part of this location's address, including house number, as a string" .
+
+jdcrp:city
+	a            rdf:Property ;
+	rdfs:domain  jdcrp:Location ;
+	rdfs:range   xsd:string ;
+	rdfs:label   "city" ;
+	rdfs:comment "The city part of this location's address, as a string" .
+
+jdcrp:region
+	a            rdf:Property ;
+	rdfs:domain  jdcrp:Location ;
+	rdfs:range   xsd:string ;
+	rdfs:label   "region" ;
+	rdfs:comment "The region part of this location's address, as a string" .
+
+jdcrp:country
+	a            rdf:Property ;
+	rdfs:domain  jdcrp:Location ;
+	rdfs:range   xsd:string ;
+	rdfs:label   "country" ;
+	rdfs:comment "The country part of this location's address, as a string" .
+
+jdcrp:latitude
+	a            rdf:Property ;
+	rdfs:domain  jdcrp:Location ;
+	rdfs:range   xsd:decimal ;
+	rdfs:label   "latitude" ;
+	rdfs:comment "The known latitude of this location, according to the source." .
+
+jdcrp:longitude
+	a            rdf:Property ;
+	rdfs:domain  jdcrp:Location ;
+	rdfs:range   xsd:decimal ;
+	rdfs:label   "longitude" ;
+	rdfs:comment "The known longitude of this location, according to the source." .

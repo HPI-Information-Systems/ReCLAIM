@@ -1,0 +1,1577 @@
+@prefix jdcrp: <https://graph.jdcrp.org/schema#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+jdcrp:AcquisitionEvent a rdfs:Class ;
+    rdfs:subClassOf jdcrp:CulturalAssetEvent .
+
+jdcrp:Classification a rdfs:Class ;
+    rdfs:subClassOf jdcrp:Entity .
+
+jdcrp:Collection a rdfs:Class ;
+    rdfs:subClassOf jdcrp:Entity .
+
+jdcrp:ConfiscationEvent a rdfs:Class ;
+    rdfs:subClassOf jdcrp:CulturalAssetEvent .
+
+jdcrp:CulturalAsset a rdfs:Class ;
+    rdfs:subClassOf jdcrp:Entity .
+
+jdcrp:CulturalAssetEvent a rdfs:Class ;
+    rdfs:subClassOf jdcrp:Event .
+
+jdcrp:DepositionEvent a rdfs:Class ;
+    rdfs:subClassOf jdcrp:CulturalAssetEvent .
+
+jdcrp:Entity a rdfs:Class .
+
+jdcrp:Event a rdfs:Class ;
+    rdfs:subClassOf jdcrp:Entity .
+
+jdcrp:ForcedSaleEvent a rdfs:Class ;
+    rdfs:subClassOf jdcrp:AcquisitionEvent .
+
+jdcrp:Image a rdfs:Class ;
+    rdfs:subClassOf jdcrp:Entity .
+
+jdcrp:Institution a rdfs:Class ;
+    rdfs:subClassOf jdcrp:LegalEntity .
+
+jdcrp:LegalEntity a rdfs:Class ;
+    rdfs:subClassOf jdcrp:Entity .
+
+jdcrp:Location a rdfs:Class ;
+    rdfs:subClassOf jdcrp:Entity .
+
+jdcrp:Material a rdfs:Class ;
+    rdfs:subClassOf jdcrp:Entity .
+
+jdcrp:Person a rdfs:Class ;
+    rdfs:subClassOf jdcrp:LegalEntity .
+
+jdcrp:Record a rdfs:Class .
+
+jdcrp:RestitutionEvent a rdfs:Class ;
+    rdfs:subClassOf jdcrp:CulturalAssetEvent .
+
+jdcrp:TransferEvent a rdfs:Class ;
+    rdfs:subClassOf jdcrp:CulturalAssetEvent .
+
+<https://graph.jdcrp.org/shapes#AcquisitionEventShape> a sh:NodeShape ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:minCount 0 ;
+            sh:or ( [ sh:class jdcrp:LegalEntity ] [ sh:class jdcrp:Person ] [ sh:class jdcrp:Institution ] ) ;
+            sh:path jdcrp:fromLegalEntity ],
+        [ sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:or ( [ sh:class jdcrp:Record ] ) ;
+            sh:path jdcrp:derivedFrom ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path jdcrp:date ],
+        [ sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:or ( [ sh:class jdcrp:Location ] ) ;
+            sh:path jdcrp:atLocation ],
+        [ sh:minCount 0 ;
+            sh:or ( [ sh:class jdcrp:LegalEntity ] [ sh:class jdcrp:Person ] [ sh:class jdcrp:Institution ] ) ;
+            sh:path jdcrp:throughLegalEntity ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path jdcrp:acquisitionCost ],
+        [ sh:minCount 0 ;
+            sh:or ( [ sh:class jdcrp:Collection ] ) ;
+            sh:path jdcrp:fromCollection ],
+        [ sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:or ( [ sh:class jdcrp:LegalEntity ] [ sh:class jdcrp:Person ] [ sh:class jdcrp:Institution ] ) ;
+            sh:path jdcrp:byLegalEntity ],
+        [ sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:or ( [ sh:class jdcrp:CulturalAsset ] ) ;
+            sh:path jdcrp:affectedCulturalAsset ],
+        [ sh:minCount 0 ;
+            sh:or ( [ sh:class jdcrp:Person ] ) ;
+            sh:path jdcrp:withInvolvementOf ],
+        [ sh:datatype xsd:integer ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path jdcrp:relativeOrder ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path jdcrp:derivedUsingMapping ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path jdcrp:physicalDescription ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path jdcrp:description ],
+        [ sh:datatype xsd:dateTime ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path jdcrp:structuredDate ] ;
+    sh:targetClass jdcrp:AcquisitionEvent .
+
+<https://graph.jdcrp.org/shapes#ClassificationShape> a sh:NodeShape ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path jdcrp:derivedUsingMapping ],
+        [ sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:or ( [ sh:class jdcrp:Record ] ) ;
+            sh:path jdcrp:derivedFrom ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path jdcrp:name ],
+        [ sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path jdcrp:wikidataUri ],
+        [ sh:minCount 0 ;
+            sh:or ( [ sh:class jdcrp:Classification ] ) ;
+            sh:path jdcrp:subClassificationOf ] ;
+    sh:targetClass jdcrp:Classification .
+
+<https://graph.jdcrp.org/shapes#CollectionShape> a sh:NodeShape ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path jdcrp:description ],
+        [ sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:or ( [ sh:class jdcrp:Person ] ) ;
+            sh:path jdcrp:ownedBy ],
+        [ sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:or ( [ sh:class jdcrp:Record ] ) ;
+            sh:path jdcrp:derivedFrom ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path jdcrp:abbreviation ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path jdcrp:name ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path jdcrp:derivedUsingMapping ] ;
+    sh:targetClass jdcrp:Collection .
+
+<https://graph.jdcrp.org/shapes#ConfiscationEventShape> a sh:NodeShape ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:or ( [ sh:class jdcrp:Record ] ) ;
+            sh:path jdcrp:derivedFrom ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path jdcrp:date ],
+        [ sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:or ( [ sh:class jdcrp:CulturalAsset ] ) ;
+            sh:path jdcrp:affectedCulturalAsset ],
+        [ sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:or ( [ sh:class jdcrp:Location ] ) ;
+            sh:path jdcrp:atLocation ],
+        [ sh:minCount 0 ;
+            sh:or ( [ sh:class jdcrp:Collection ] ) ;
+            sh:path jdcrp:fromCollection ],
+        [ sh:minCount 0 ;
+            sh:or ( [ sh:class jdcrp:LegalEntity ] [ sh:class jdcrp:Person ] [ sh:class jdcrp:Institution ] ) ;
+            sh:path jdcrp:fromLegalEntity ],
+        [ sh:datatype xsd:integer ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path jdcrp:relativeOrder ],
+        [ sh:minCount 0 ;
+            sh:or ( [ sh:class jdcrp:Person ] ) ;
+            sh:path jdcrp:withInvolvementOf ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path jdcrp:derivedUsingMapping ],
+        [ sh:datatype xsd:dateTime ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path jdcrp:structuredDate ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path jdcrp:description ],
+        [ sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:or ( [ sh:class jdcrp:LegalEntity ] [ sh:class jdcrp:Person ] [ sh:class jdcrp:Institution ] ) ;
+            sh:path jdcrp:byLegalEntity ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path jdcrp:physicalDescription ] ;
+    sh:targetClass jdcrp:ConfiscationEvent .
+
+<https://graph.jdcrp.org/shapes#CulturalAssetEventShape> a sh:NodeShape ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path jdcrp:date ],
+        [ sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:or ( [ sh:class jdcrp:CulturalAsset ] ) ;
+            sh:path jdcrp:affectedCulturalAsset ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path jdcrp:derivedUsingMapping ],
+        [ sh:datatype xsd:integer ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path jdcrp:relativeOrder ],
+        [ sh:minCount 0 ;
+            sh:or ( [ sh:class jdcrp:Person ] ) ;
+            sh:path jdcrp:withInvolvementOf ],
+        [ sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:or ( [ sh:class jdcrp:Record ] ) ;
+            sh:path jdcrp:derivedFrom ],
+        [ sh:datatype xsd:dateTime ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path jdcrp:structuredDate ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path jdcrp:description ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path jdcrp:physicalDescription ] ;
+    sh:targetClass jdcrp:CulturalAssetEvent .
+
+<https://graph.jdcrp.org/shapes#CulturalAssetShape> a sh:NodeShape ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path jdcrp:measurements ],
+        [ sh:datatype xsd:date ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path jdcrp:structuredCreationDate ],
+        [ sh:minCount 0 ;
+            sh:or ( [ sh:class jdcrp:Classification ] ) ;
+            sh:path jdcrp:classifiedAs ],
+        [ sh:minCount 0 ;
+            sh:or ( [ sh:class jdcrp:Material ] ) ;
+            sh:path jdcrp:consistsOfMaterial ],
+        [ sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:or ( [ sh:class jdcrp:Collection ] ) ;
+            sh:path jdcrp:collectedIn ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path jdcrp:shelfNumber ],
+        [ sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:or ( [ sh:class jdcrp:Location ] ) ;
+            sh:path jdcrp:locatedIn ],
+        [ sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:or ( [ sh:class jdcrp:Location ] ) ;
+            sh:path jdcrp:createdInLocation ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path jdcrp:inventoryNumber ],
+        [ sh:minCount 0 ;
+            sh:or ( [ sh:class jdcrp:Image ] ) ;
+            sh:path jdcrp:referencedInCardImageBack ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path jdcrp:informationOnImages ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path jdcrp:annotation ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path jdcrp:errNumber ],
+        [ sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:or ( [ sh:class jdcrp:LegalEntity ] [ sh:class jdcrp:Person ] [ sh:class jdcrp:Institution ] ) ;
+            sh:path jdcrp:createdBy ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path jdcrp:bundesarchivSignature ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path jdcrp:linzNumber ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path jdcrp:provenanceDescription ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path jdcrp:currentRemainDescription ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path jdcrp:bundesarchivPropertyCardFileNameFront ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path jdcrp:bundesarchivEndDate ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path jdcrp:archivalSourceDescription ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path jdcrp:bundesarchivStartDate ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path jdcrp:munichNumber ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path jdcrp:bibliography ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path jdcrp:creationDate ],
+        [ sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:or ( [ sh:class jdcrp:Record ] ) ;
+            sh:path jdcrp:derivedFrom ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path jdcrp:bundesarchivBand ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path jdcrp:physicalDescription ],
+        [ sh:minCount 0 ;
+            sh:or ( [ sh:class jdcrp:Image ] ) ;
+            sh:path jdcrp:referencedInCardImageFront ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path jdcrp:catalogNumber ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path jdcrp:identifyingMarks ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path jdcrp:claimNumber ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path jdcrp:preConfiscationHistoryDescription ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path jdcrp:copiesOfCard ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path jdcrp:negativeNumber ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path jdcrp:title ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path jdcrp:wccpNumber ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path jdcrp:weight ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path jdcrp:marburgNumber ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path jdcrp:derivedUsingMapping ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path jdcrp:postConfiscationHistoryDescription ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path jdcrp:physicalConditionDescription ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path jdcrp:bundesarchivTitle ],
+        [ sh:minCount 0 ;
+            sh:or ( [ sh:class jdcrp:Image ] ) ;
+            sh:path jdcrp:referencedInCardImage ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path jdcrp:bundesarchivPropertyCardFileNameBack ],
+        [ sh:minCount 0 ;
+            sh:or ( [ sh:class jdcrp:Image ] ) ;
+            sh:path jdcrp:depictedInImage ] ;
+    sh:targetClass jdcrp:CulturalAsset .
+
+<https://graph.jdcrp.org/shapes#DepositionEventShape> a sh:NodeShape ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:minCount 0 ;
+            sh:or ( [ sh:class jdcrp:LegalEntity ] [ sh:class jdcrp:Person ] [ sh:class jdcrp:Institution ] ) ;
+            sh:path jdcrp:possessor ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path jdcrp:date ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path jdcrp:description ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path jdcrp:depotNumber ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path jdcrp:physicalDescription ],
+        [ sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:or ( [ sh:class jdcrp:CulturalAsset ] ) ;
+            sh:path jdcrp:affectedCulturalAsset ],
+        [ sh:minCount 0 ;
+            sh:or ( [ sh:class jdcrp:LegalEntity ] [ sh:class jdcrp:Person ] [ sh:class jdcrp:Institution ] ) ;
+            sh:path jdcrp:depositedBy ],
+        [ sh:minCount 0 ;
+            sh:or ( [ sh:class jdcrp:Person ] ) ;
+            sh:path jdcrp:withInvolvementOf ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path jdcrp:derivedUsingMapping ],
+        [ sh:datatype xsd:dateTime ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path jdcrp:structuredDate ],
+        [ sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:or ( [ sh:class jdcrp:Record ] ) ;
+            sh:path jdcrp:derivedFrom ],
+        [ sh:datatype xsd:integer ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path jdcrp:relativeOrder ],
+        [ sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:or ( [ sh:class jdcrp:Collection ] ) ;
+            sh:path jdcrp:collectedIn ],
+        [ sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:or ( [ sh:class jdcrp:Location ] ) ;
+            sh:path jdcrp:atLocation ] ;
+    sh:targetClass jdcrp:DepositionEvent .
+
+<https://graph.jdcrp.org/shapes#EntityShape> a sh:NodeShape ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path jdcrp:derivedUsingMapping ],
+        [ sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:or ( [ sh:class jdcrp:Record ] ) ;
+            sh:path jdcrp:derivedFrom ] ;
+    sh:targetClass jdcrp:Entity .
+
+<https://graph.jdcrp.org/shapes#EventShape> a sh:NodeShape ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:datatype xsd:dateTime ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path jdcrp:structuredDate ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path jdcrp:date ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path jdcrp:derivedUsingMapping ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path jdcrp:description ],
+        [ sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:or ( [ sh:class jdcrp:Record ] ) ;
+            sh:path jdcrp:derivedFrom ] ;
+    sh:targetClass jdcrp:Event .
+
+<https://graph.jdcrp.org/shapes#ForcedSaleEventShape> a sh:NodeShape ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path jdcrp:derivedUsingMapping ],
+        [ sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:or ( [ sh:class jdcrp:Location ] ) ;
+            sh:path jdcrp:atLocation ],
+        [ sh:minCount 0 ;
+            sh:or ( [ sh:class jdcrp:Person ] ) ;
+            sh:path jdcrp:withInvolvementOf ],
+        [ sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:or ( [ sh:class jdcrp:LegalEntity ] [ sh:class jdcrp:Person ] [ sh:class jdcrp:Institution ] ) ;
+            sh:path jdcrp:byLegalEntity ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path jdcrp:acquisitionCost ],
+        [ sh:minCount 0 ;
+            sh:or ( [ sh:class jdcrp:LegalEntity ] [ sh:class jdcrp:Person ] [ sh:class jdcrp:Institution ] ) ;
+            sh:path jdcrp:fromLegalEntity ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path jdcrp:date ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path jdcrp:physicalDescription ],
+        [ sh:datatype xsd:integer ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path jdcrp:relativeOrder ],
+        [ sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:or ( [ sh:class jdcrp:CulturalAsset ] ) ;
+            sh:path jdcrp:affectedCulturalAsset ],
+        [ sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:or ( [ sh:class jdcrp:Record ] ) ;
+            sh:path jdcrp:derivedFrom ],
+        [ sh:minCount 0 ;
+            sh:or ( [ sh:class jdcrp:LegalEntity ] [ sh:class jdcrp:Person ] [ sh:class jdcrp:Institution ] ) ;
+            sh:path jdcrp:throughLegalEntity ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path jdcrp:description ],
+        [ sh:minCount 0 ;
+            sh:or ( [ sh:class jdcrp:Collection ] ) ;
+            sh:path jdcrp:fromCollection ],
+        [ sh:datatype xsd:dateTime ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path jdcrp:structuredDate ] ;
+    sh:targetClass jdcrp:ForcedSaleEvent .
+
+<https://graph.jdcrp.org/shapes#ImageShape> a sh:NodeShape ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path jdcrp:derivedUsingMapping ],
+        [ sh:datatype xsd:anyURI ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path jdcrp:url ],
+        [ sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:or ( [ sh:class jdcrp:Record ] ) ;
+            sh:path jdcrp:derivedFrom ] ;
+    sh:targetClass jdcrp:Image .
+
+<https://graph.jdcrp.org/shapes#InstitutionShape> a sh:NodeShape ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path jdcrp:derivedUsingMapping ],
+        [ sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:or ( [ sh:class jdcrp:Record ] ) ;
+            sh:path jdcrp:derivedFrom ],
+        [ sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:or ( [ sh:class jdcrp:Location ] ) ;
+            sh:path jdcrp:basedIn ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path jdcrp:archivalSourceDescription ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path jdcrp:name ] ;
+    sh:targetClass jdcrp:Institution .
+
+<https://graph.jdcrp.org/shapes#LegalEntityShape> a sh:NodeShape ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:or ( [ sh:class jdcrp:Record ] ) ;
+            sh:path jdcrp:derivedFrom ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path jdcrp:name ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path jdcrp:derivedUsingMapping ],
+        [ sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:or ( [ sh:class jdcrp:Location ] ) ;
+            sh:path jdcrp:basedIn ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path jdcrp:archivalSourceDescription ] ;
+    sh:targetClass jdcrp:LegalEntity .
+
+<https://graph.jdcrp.org/shapes#LocationShape> a sh:NodeShape ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:datatype xsd:decimal ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path jdcrp:longitude ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path jdcrp:country ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path jdcrp:description ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path jdcrp:city ],
+        [ sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:or ( [ sh:class jdcrp:Location ] ) ;
+            sh:path jdcrp:partOf ],
+        [ sh:datatype xsd:decimal ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path jdcrp:latitude ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path jdcrp:street ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path jdcrp:derivedUsingMapping ],
+        [ sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:or ( [ sh:class jdcrp:Record ] ) ;
+            sh:path jdcrp:derivedFrom ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path jdcrp:region ] ;
+    sh:targetClass jdcrp:Location .
+
+<https://graph.jdcrp.org/shapes#MaterialShape> a sh:NodeShape ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path jdcrp:name ],
+        [ sh:minCount 0 ;
+            sh:or ( [ sh:class jdcrp:Material ] ) ;
+            sh:path jdcrp:subMaterialOf ],
+        [ sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:or ( [ sh:class jdcrp:Record ] ) ;
+            sh:path jdcrp:derivedFrom ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path jdcrp:derivedUsingMapping ],
+        [ sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path jdcrp:wikidataUri ] ;
+    sh:targetClass jdcrp:Material .
+
+<https://graph.jdcrp.org/shapes#PersonShape> a sh:NodeShape ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path jdcrp:lastName ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path jdcrp:derivedUsingMapping ],
+        [ sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:or ( [ sh:class jdcrp:Location ] ) ;
+            sh:path jdcrp:basedIn ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path jdcrp:lifetime ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path jdcrp:firstName ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path jdcrp:name ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path jdcrp:birthDate ],
+        [ sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:or ( [ sh:class jdcrp:Record ] ) ;
+            sh:path jdcrp:derivedFrom ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path jdcrp:pseudonym ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path jdcrp:archivalSourceDescription ],
+        [ sh:datatype xsd:date ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path jdcrp:structuredBirthDate ],
+        [ sh:datatype xsd:date ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path jdcrp:structuredDeathDate ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path jdcrp:deathDate ],
+        [ sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:or ( [ sh:class jdcrp:Location ] ) ;
+            sh:path jdcrp:diedInLocation ],
+        [ sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:or ( [ sh:class jdcrp:Location ] ) ;
+            sh:path jdcrp:bornInLocation ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path jdcrp:historyDescription ] ;
+    sh:targetClass jdcrp:Person .
+
+<https://graph.jdcrp.org/shapes#RestitutionEventShape> a sh:NodeShape ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:or ( [ sh:class jdcrp:CulturalAsset ] ) ;
+            sh:path jdcrp:affectedCulturalAsset ],
+        [ sh:minCount 0 ;
+            sh:or ( [ sh:class jdcrp:Person ] ) ;
+            sh:path jdcrp:withInvolvementOf ],
+        [ sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:or ( [ sh:class jdcrp:Location ] ) ;
+            sh:path jdcrp:atLocation ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path jdcrp:physicalDescription ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path jdcrp:derivedUsingMapping ],
+        [ sh:datatype xsd:dateTime ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path jdcrp:structuredDate ],
+        [ sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:or ( [ sh:class jdcrp:LegalEntity ] [ sh:class jdcrp:Person ] [ sh:class jdcrp:Institution ] ) ;
+            sh:path jdcrp:restitutedToLegalEntity ],
+        [ sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:or ( [ sh:class jdcrp:Record ] ) ;
+            sh:path jdcrp:derivedFrom ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path jdcrp:date ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path jdcrp:description ],
+        [ sh:datatype xsd:integer ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path jdcrp:relativeOrder ] ;
+    sh:targetClass jdcrp:RestitutionEvent .
+
+<https://graph.jdcrp.org/shapes#TransferEventShape> a sh:NodeShape ;
+    sh:closed true ;
+    sh:ignoredProperties ( rdf:type ) ;
+    sh:property [ sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:or ( [ sh:class jdcrp:Location ] ) ;
+            sh:path jdcrp:toLocation ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path jdcrp:structuredDepartureDate ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path jdcrp:derivedUsingMapping ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path jdcrp:description ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path jdcrp:arrivalDate ],
+        [ sh:minCount 0 ;
+            sh:or ( [ sh:class jdcrp:LegalEntity ] [ sh:class jdcrp:Person ] [ sh:class jdcrp:Institution ] ) ;
+            sh:path jdcrp:identifiedBy ],
+        [ sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:or ( [ sh:class jdcrp:Collection ] ) ;
+            sh:path jdcrp:toCollection ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path jdcrp:physicalDescriptionBefore ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path jdcrp:structuredArrivalDate ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path jdcrp:physicalDescription ],
+        [ sh:minCount 0 ;
+            sh:or ( [ sh:class jdcrp:Collection ] ) ;
+            sh:path jdcrp:fromCollection ],
+        [ sh:datatype xsd:integer ;
+            sh:maxCount 1 ;
+            sh:minCount 1 ;
+            sh:path jdcrp:relativeOrder ],
+        [ sh:minCount 0 ;
+            sh:or ( [ sh:class jdcrp:LegalEntity ] [ sh:class jdcrp:Person ] [ sh:class jdcrp:Institution ] ) ;
+            sh:path jdcrp:possessorAfter ],
+        [ sh:minCount 0 ;
+            sh:or ( [ sh:class jdcrp:LegalEntity ] [ sh:class jdcrp:Person ] [ sh:class jdcrp:Institution ] ) ;
+            sh:path jdcrp:possessorBefore ],
+        [ sh:datatype xsd:dateTime ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path jdcrp:structuredDate ],
+        [ sh:minCount 0 ;
+            sh:or ( [ sh:class jdcrp:Person ] ) ;
+            sh:path jdcrp:withInvolvementOf ],
+        [ sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:or ( [ sh:class jdcrp:CulturalAsset ] ) ;
+            sh:path jdcrp:affectedCulturalAsset ],
+        [ sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:or ( [ sh:class jdcrp:Location ] ) ;
+            sh:path jdcrp:fromLocation ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path jdcrp:date ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path jdcrp:physicalDescriptionAfter ],
+        [ sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:or ( [ sh:class jdcrp:LegalEntity ] [ sh:class jdcrp:Person ] [ sh:class jdcrp:Institution ] ) ;
+            sh:path jdcrp:byLegalEntity ],
+        [ sh:datatype xsd:string ;
+            sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:path jdcrp:departureDate ],
+        [ sh:maxCount 1 ;
+            sh:minCount 0 ;
+            sh:or ( [ sh:class jdcrp:Record ] ) ;
+            sh:path jdcrp:derivedFrom ] ;
+    sh:targetClass jdcrp:TransferEvent .
+
+jdcrp:abbreviation a rdf:Property ;
+    rdfs:label "abbreviation" ;
+    rdfs:comment "An abbreviation for this collection used in the context of the source" ;
+    rdfs:domain jdcrp:Collection ;
+    rdfs:range xsd:string .
+
+jdcrp:annotation a rdf:Property ;
+    rdfs:label "annotation" ;
+    rdfs:comment "Any annotations related to this cultural asset" ;
+    rdfs:domain jdcrp:CulturalAsset ;
+    rdfs:range xsd:string .
+
+jdcrp:arrivalDate a rdf:Property ;
+    rdfs:label "arrival date" ;
+    rdfs:comment "The date the cultural asset arrived at the destination" ;
+    rdfs:domain jdcrp:TransferEvent ;
+    rdfs:range xsd:string .
+
+jdcrp:bibliography a rdf:Property ;
+    rdfs:label "bibliography" ;
+    rdfs:comment "Related literature to this cultural asset " ;
+    rdfs:domain jdcrp:CulturalAsset ;
+    rdfs:range xsd:string .
+
+jdcrp:birthDate a rdf:Property ;
+    rdfs:label "birth date" ;
+    rdfs:comment "The date of birth of this person, possibly as an unstructured string" ;
+    rdfs:domain jdcrp:Person ;
+    rdfs:range xsd:string .
+
+jdcrp:bornInLocation a rdf:Property ;
+    rdfs:label "birth place" ;
+    rdfs:comment "The location where this person was born" ;
+    rdfs:domain jdcrp:Person ;
+    rdfs:range jdcrp:Location .
+
+jdcrp:bundesarchivBand a rdf:Property ;
+    rdfs:label "bundesarchiv band" ;
+    rdfs:comment "The band number of the Bundesarchiv where this cultural asset is referenced" ;
+    rdfs:domain jdcrp:CulturalAsset ;
+    rdfs:range xsd:string .
+
+jdcrp:bundesarchivEndDate a rdf:Property ;
+    rdfs:label "bundesarchiv end date" ;
+    rdfs:comment "The end date of the duration in Bundesarchiv" ;
+    rdfs:domain jdcrp:CulturalAsset ;
+    rdfs:range xsd:string .
+
+jdcrp:bundesarchivPropertyCardFileNameBack a rdf:Property ;
+    rdfs:label "bundesarchiv property card file name back" ;
+    rdfs:comment "The file name of the back of the property card in the Bundesarchiv" ;
+    rdfs:domain jdcrp:CulturalAsset ;
+    rdfs:range xsd:string .
+
+jdcrp:bundesarchivPropertyCardFileNameFront a rdf:Property ;
+    rdfs:label "bundesarchiv property card file name front" ;
+    rdfs:comment "The file name of the front of the property card in the Bundesarchiv" ;
+    rdfs:domain jdcrp:CulturalAsset ;
+    rdfs:range xsd:string .
+
+jdcrp:bundesarchivSignature a rdf:Property ;
+    rdfs:label "bundesarchiv signature" ;
+    rdfs:comment "The signature of the Bundesarchiv where this cultural asset is referenced" ;
+    rdfs:domain jdcrp:CulturalAsset ;
+    rdfs:range xsd:string .
+
+jdcrp:bundesarchivStartDate a rdf:Property ;
+    rdfs:label "bundesarchiv start date" ;
+    rdfs:comment "The start date of the duration in Bundesarchiv" ;
+    rdfs:domain jdcrp:CulturalAsset ;
+    rdfs:range xsd:string .
+
+jdcrp:bundesarchivTitle a rdf:Property ;
+    rdfs:label "bundesarchiv title" ;
+    rdfs:comment "The title of the Bundesarchiv where this cultural asset is referenced" ;
+    rdfs:domain jdcrp:CulturalAsset ;
+    rdfs:range xsd:string .
+
+jdcrp:catalogNumber a rdf:Property ;
+    rdfs:label "catalog number" ;
+    rdfs:comment "The catalog number in the context of the Wiesbaden or Marburg Central collecting point" ;
+    rdfs:domain jdcrp:CulturalAsset ;
+    rdfs:range xsd:string .
+
+jdcrp:city a rdf:Property ;
+    rdfs:label "city" ;
+    rdfs:comment "The city part of this location's address, as a string" ;
+    rdfs:domain jdcrp:Location ;
+    rdfs:range xsd:string .
+
+jdcrp:claimNumber a rdf:Property ;
+    rdfs:label "claim number" ;
+    rdfs:comment "The claim number in the context of the Wiesbaden or Marburg Central collecting point" ;
+    rdfs:domain jdcrp:CulturalAsset ;
+    rdfs:range xsd:string .
+
+jdcrp:classifiedAs a rdf:Property ;
+    rdfs:label "classified as" ;
+    rdfs:comment "The classification of this cultural asset" ;
+    rdfs:domain jdcrp:CulturalAsset ;
+    rdfs:range jdcrp:Classification .
+
+jdcrp:consistsOfMaterial a rdf:Property ;
+    rdfs:label "consists of material" ;
+    rdfs:comment "The material type that this cultural asset is made of" ;
+    rdfs:domain jdcrp:CulturalAsset ;
+    rdfs:range jdcrp:Material .
+
+jdcrp:copiesOfCard a rdf:Property ;
+    rdfs:label "copies of card" ;
+    rdfs:comment "The number of copies of this property card" ;
+    rdfs:domain jdcrp:CulturalAsset ;
+    rdfs:range xsd:string .
+
+jdcrp:country a rdf:Property ;
+    rdfs:label "country" ;
+    rdfs:comment "The country part of this location's address, as a string" ;
+    rdfs:domain jdcrp:Location ;
+    rdfs:range xsd:string .
+
+jdcrp:createdBy a rdf:Property ;
+    rdfs:label "created by" ;
+    rdfs:comment "The person who created this cultural asset" ;
+    rdfs:domain jdcrp:CulturalAsset ;
+    rdfs:range jdcrp:LegalEntity .
+
+jdcrp:createdInLocation a rdf:Property ;
+    rdfs:label "created in location" ;
+    rdfs:comment "The location where this cultural asset was created" ;
+    rdfs:domain jdcrp:CulturalAsset ;
+    rdfs:range jdcrp:Location .
+
+jdcrp:creationDate a rdf:Property ;
+    rdfs:label "creation date" ;
+    rdfs:comment "The date when this cultural asset was created, possibly as an unstructured string" ;
+    rdfs:domain jdcrp:CulturalAsset ;
+    rdfs:range xsd:string .
+
+jdcrp:currentRemainDescription a rdf:Property ;
+    rdfs:label "current remain description" ;
+    rdfs:comment "A textual description of the current state of this cultural asset" ;
+    rdfs:domain jdcrp:CulturalAsset ;
+    rdfs:range xsd:string .
+
+jdcrp:deathDate a rdf:Property ;
+    rdfs:label "death date" ;
+    rdfs:comment "The date of death of this person, possibly as an unstructured string" ;
+    rdfs:domain jdcrp:Person ;
+    rdfs:range xsd:string .
+
+jdcrp:departureDate a rdf:Property ;
+    rdfs:label "departure date" ;
+    rdfs:comment "The date the cultural asset was departured from the original location" ;
+    rdfs:domain jdcrp:TransferEvent ;
+    rdfs:range xsd:string .
+
+jdcrp:depictedInImage a rdf:Property ;
+    rdfs:label "depicted in" ;
+    rdfs:comment "An image of the physical cultural asset" ;
+    rdfs:domain jdcrp:CulturalAsset ;
+    rdfs:range jdcrp:Image .
+
+jdcrp:depositedBy a rdf:Property ;
+    rdfs:label "deposited by" ;
+    rdfs:comment "The legal entity that deposited the cultural asset" ;
+    rdfs:domain jdcrp:DepositionEvent ;
+    rdfs:range jdcrp:LegalEntity .
+
+jdcrp:depotNumber a rdf:Property ;
+    rdfs:label "depot number" ;
+    rdfs:comment "The number of the depot the cultural asset was deposited in" ;
+    rdfs:domain jdcrp:DepositionEvent ;
+    rdfs:range xsd:string .
+
+jdcrp:diedInLocation a rdf:Property ;
+    rdfs:label "death place" ;
+    rdfs:comment "The location where this person died" ;
+    rdfs:domain jdcrp:Person ;
+    rdfs:range jdcrp:Location .
+
+jdcrp:errNumber a rdf:Property ;
+    rdfs:label "err number" ;
+    rdfs:comment "The Einsatzstab Reichsleiter Rosenberg number of this cultural asset, if applicable" ;
+    rdfs:domain jdcrp:CulturalAsset ;
+    rdfs:range xsd:string .
+
+jdcrp:firstName a rdf:Property ;
+    rdfs:label "first name" ;
+    rdfs:comment "The first name of this person" ;
+    rdfs:domain jdcrp:Person ;
+    rdfs:range xsd:string .
+
+jdcrp:fromLocation a rdf:Property ;
+    rdfs:label "from location" ;
+    rdfs:comment "The origin location from which the cultural asset(s) were transferred" ;
+    rdfs:domain jdcrp:TransferEvent ;
+    rdfs:range jdcrp:Location .
+
+jdcrp:historyDescription a rdf:Property ;
+    rdfs:label "history description" ;
+    rdfs:comment "An unstructured, textual description of this person's history" ;
+    rdfs:domain jdcrp:Person ;
+    rdfs:range xsd:string .
+
+jdcrp:identifiedBy a rdf:Property ;
+    rdfs:label "identified by" ;
+    rdfs:comment "The legal entities who were responsible for the identification of the cultural asset at destination" ;
+    rdfs:domain jdcrp:TransferEvent ;
+    rdfs:range jdcrp:LegalEntity .
+
+jdcrp:identifyingMarks a rdf:Property ;
+    rdfs:label "identifying marks" ;
+    rdfs:comment "A textual description of any identifying marks found found on / specific to this cultural asset" ;
+    rdfs:domain jdcrp:CulturalAsset ;
+    rdfs:range xsd:string .
+
+jdcrp:informationOnImages a rdf:Property ;
+    rdfs:label "information on images" ;
+    rdfs:comment "Information on the images of this cultural asset e.g. links to negatives" ;
+    rdfs:domain jdcrp:CulturalAsset ;
+    rdfs:range xsd:string .
+
+jdcrp:inventoryNumber a rdf:Property ;
+    rdfs:label "inventory number" ;
+    rdfs:comment "The inventory number in the context of the Wiesbaden or Marburg Central collecting point" ;
+    rdfs:domain jdcrp:CulturalAsset ;
+    rdfs:range xsd:string .
+
+jdcrp:lastName a rdf:Property ;
+    rdfs:label "last name" ;
+    rdfs:comment "The last name of this person" ;
+    rdfs:domain jdcrp:Person ;
+    rdfs:range xsd:string .
+
+jdcrp:latitude a rdf:Property ;
+    rdfs:label "latitude" ;
+    rdfs:comment "The known latitude of this location, according to the source." ;
+    rdfs:domain jdcrp:Location ;
+    rdfs:range xsd:decimal .
+
+jdcrp:lifetime a rdf:Property ;
+    rdfs:label "lifetime" ;
+    rdfs:comment "The time at which this person was generally alive or active, possibly as an unstructured string" ;
+    rdfs:domain jdcrp:Person ;
+    rdfs:range xsd:string .
+
+jdcrp:linzNumber a rdf:Property ;
+    rdfs:label "linz number" ;
+    rdfs:comment "The linz number of this cultural asset, if applicable" ;
+    rdfs:domain jdcrp:CulturalAsset ;
+    rdfs:range xsd:string .
+
+jdcrp:locatedIn a rdf:Property ;
+    rdfs:label "located in" ;
+    rdfs:comment "The location where this cultural asset is located" ;
+    rdfs:domain jdcrp:CulturalAsset ;
+    rdfs:range jdcrp:Location .
+
+jdcrp:longitude a rdf:Property ;
+    rdfs:label "longitude" ;
+    rdfs:comment "The known longitude of this location, according to the source." ;
+    rdfs:domain jdcrp:Location ;
+    rdfs:range xsd:decimal .
+
+jdcrp:marburgNumber a rdf:Property ;
+    rdfs:label "marburg number" ;
+    rdfs:comment "The marburg central collection point number of this cultural asset, if applicable" ;
+    rdfs:domain jdcrp:CulturalAsset ;
+    rdfs:range xsd:string .
+
+jdcrp:measurements a rdf:Property ;
+    rdfs:label "measurements" ;
+    rdfs:comment "The measurements of this cultural asset, possibly as an unstructured string" ;
+    rdfs:domain jdcrp:CulturalAsset ;
+    rdfs:range xsd:string .
+
+jdcrp:munichNumber a rdf:Property ;
+    rdfs:label "munich number" ;
+    rdfs:comment "The munich number of this cultural asset, if applicable" ;
+    rdfs:domain jdcrp:CulturalAsset ;
+    rdfs:range xsd:string .
+
+jdcrp:negativeNumber a rdf:Property ;
+    rdfs:label "negative number" ;
+    rdfs:comment "The negative number in the context of the Wiesbaden or Marburg Central collecting point" ;
+    rdfs:domain jdcrp:CulturalAsset ;
+    rdfs:range xsd:string .
+
+jdcrp:ownedBy a rdf:Property ;
+    rdfs:label "ownedBy" ;
+    rdfs:comment "The owner of the collection" ;
+    rdfs:domain jdcrp:Collection ;
+    rdfs:range jdcrp:Person .
+
+jdcrp:partOf a rdf:Property ;
+    rdfs:label "partOf" ;
+    rdfs:comment "Another location that this location is entirely part of" ;
+    rdfs:domain jdcrp:Location ;
+    rdfs:range jdcrp:Location .
+
+jdcrp:physicalConditionDescription a rdf:Property ;
+    rdfs:label "physical condition description" ;
+    rdfs:comment "A textual description of the physical condition of this cultural asset" ;
+    rdfs:domain jdcrp:CulturalAsset ;
+    rdfs:range xsd:string .
+
+jdcrp:physicalDescriptionAfter a rdf:Property ;
+    rdfs:label "physical description after" ;
+    rdfs:comment "The physical description of the cultural asset after the transferration" ;
+    rdfs:domain jdcrp:TransferEvent ;
+    rdfs:range xsd:string .
+
+jdcrp:physicalDescriptionBefore a rdf:Property ;
+    rdfs:label "physical description before" ;
+    rdfs:comment "The physical description of the cultural asset before the transferration" ;
+    rdfs:domain jdcrp:TransferEvent ;
+    rdfs:range xsd:string .
+
+jdcrp:possessor a rdf:Property ;
+    rdfs:label "possessor" ;
+    rdfs:comment "The legal that possessed the cultural asset at the time of deposition" ;
+    rdfs:domain jdcrp:DepositionEvent ;
+    rdfs:range jdcrp:LegalEntity .
+
+jdcrp:possessorAfter a rdf:Property ;
+    rdfs:label "possessor after" ;
+    rdfs:comment "The legal entity who possessed the cultural asset after transferration" ;
+    rdfs:domain jdcrp:TransferEvent ;
+    rdfs:range jdcrp:LegalEntity .
+
+jdcrp:possessorBefore a rdf:Property ;
+    rdfs:label "possessor before" ;
+    rdfs:comment "The legal entity who possessed the cultural asset before transferration" ;
+    rdfs:domain jdcrp:TransferEvent ;
+    rdfs:range jdcrp:LegalEntity .
+
+jdcrp:postConfiscationHistoryDescription a rdf:Property ;
+    rdfs:label "post-confiscation history description" ;
+    rdfs:comment "A textual description of the history of this cultural asset after it was confiscated" ;
+    rdfs:domain jdcrp:CulturalAsset ;
+    rdfs:range xsd:string .
+
+jdcrp:preConfiscationHistoryDescription a rdf:Property ;
+    rdfs:label "pre-confiscation history description" ;
+    rdfs:comment "A textual description of the history of this cultural asset before it was confiscated" ;
+    rdfs:domain jdcrp:CulturalAsset ;
+    rdfs:range xsd:string .
+
+jdcrp:provenanceDescription a rdf:Property ;
+    rdfs:label "provenance description" ;
+    rdfs:comment "A textual description of the provenance of this cultural asset" ;
+    rdfs:domain jdcrp:CulturalAsset ;
+    rdfs:range xsd:string .
+
+jdcrp:pseudonym a rdf:Property ;
+    rdfs:label "pseudonym" ;
+    rdfs:comment "The pseudonym, nickname or artist's name of this person" ;
+    rdfs:domain jdcrp:Person ;
+    rdfs:range xsd:string .
+
+jdcrp:referencedInCardImage a rdf:Property ;
+    rdfs:label "referenced in card image" ;
+    rdfs:comment "An image of the card this cultural asset is referenced in" ;
+    rdfs:domain jdcrp:CulturalAsset ;
+    rdfs:range jdcrp:Image .
+
+jdcrp:referencedInCardImageBack a rdf:Property ;
+    rdfs:label "referenced in card image back" ;
+    rdfs:comment "An image of the back of a card this card this cultural asset is referenced in" ;
+    rdfs:domain jdcrp:CulturalAsset ;
+    rdfs:range jdcrp:Image .
+
+jdcrp:referencedInCardImageFront a rdf:Property ;
+    rdfs:label "referenced in card image front" ;
+    rdfs:comment "An image of the front of a card this cultural asset is referenced in" ;
+    rdfs:domain jdcrp:CulturalAsset ;
+    rdfs:range jdcrp:Image .
+
+jdcrp:region a rdf:Property ;
+    rdfs:label "region" ;
+    rdfs:comment "The region part of this location's address, as a string" ;
+    rdfs:domain jdcrp:Location ;
+    rdfs:range xsd:string .
+
+jdcrp:restitutedToLegalEntity a rdf:Property ;
+    rdfs:label "to person" ;
+    rdfs:comment "The person or institution to whom the cultural asset was restituted" ;
+    rdfs:domain jdcrp:RestitutionEvent ;
+    rdfs:range jdcrp:LegalEntity .
+
+jdcrp:shelfNumber a rdf:Property ;
+    rdfs:label "shelf number" ;
+    rdfs:comment "The shelf number of this cultural asset in the Collection Point" ;
+    rdfs:domain jdcrp:CulturalAsset ;
+    rdfs:range xsd:string .
+
+jdcrp:street a rdf:Property ;
+    rdfs:label "street" ;
+    rdfs:comment "The street part of this location's address, including house number, as a string" ;
+    rdfs:domain jdcrp:Location ;
+    rdfs:range xsd:string .
+
+jdcrp:structuredArrivalDate a rdf:Property ;
+    rdfs:label "structured arrival date" ;
+    rdfs:comment "Structured version of arrival date" ;
+    rdfs:domain jdcrp:TransferEvent ;
+    rdfs:range xsd:string .
+
+jdcrp:structuredBirthDate a rdf:Property ;
+    rdfs:label "structured birth date" ;
+    rdfs:comment "The date of birth of this person, as a structured date" ;
+    rdfs:domain jdcrp:Person ;
+    rdfs:range xsd:date .
+
+jdcrp:structuredCreationDate a rdf:Property ;
+    rdfs:label "structured creation date" ;
+    rdfs:comment "The date when this cultural asset was created, as a structured date" ;
+    rdfs:domain jdcrp:CulturalAsset ;
+    rdfs:range xsd:date .
+
+jdcrp:structuredDeathDate a rdf:Property ;
+    rdfs:label "structured death date" ;
+    rdfs:comment "The date of death of this person, as a structured date" ;
+    rdfs:domain jdcrp:Person ;
+    rdfs:range xsd:date .
+
+jdcrp:structuredDepartureDate a rdf:Property ;
+    rdfs:label "structured departure date" ;
+    rdfs:comment "Structured version of departure date" ;
+    rdfs:domain jdcrp:TransferEvent ;
+    rdfs:range xsd:string .
+
+jdcrp:subClassificationOf a rdf:Property ;
+    rdfs:label "subClassificationOf" ;
+    rdfs:comment "The classification this one is inherited from" ;
+    rdfs:domain jdcrp:Classification ;
+    rdfs:range jdcrp:Classification .
+
+jdcrp:subMaterialOf a rdf:Property ;
+    rdfs:label "subMaterialOf" ;
+    rdfs:comment "The material this one is inherited from" ;
+    rdfs:domain jdcrp:Material ;
+    rdfs:range jdcrp:Material .
+
+jdcrp:title a rdf:Property ;
+    rdfs:label "title" ;
+    rdfs:comment "The title of this cultural asset" ;
+    rdfs:domain jdcrp:CulturalAsset ;
+    rdfs:range xsd:string .
+
+jdcrp:toCollection a rdf:Property ;
+    rdfs:label "to collection" ;
+    rdfs:comment "The collection to which the cultural asset(s) were transferred" ;
+    rdfs:domain jdcrp:TransferEvent ;
+    rdfs:range jdcrp:Collection .
+
+jdcrp:toLocation a rdf:Property ;
+    rdfs:label "to location" ;
+    rdfs:comment "The destination location to which the cultural asset(s) were transferred" ;
+    rdfs:domain jdcrp:TransferEvent ;
+    rdfs:range jdcrp:Location .
+
+jdcrp:url a rdf:Property ;
+    rdfs:label "url" ;
+    rdfs:comment "The url where this image can be fetched from" ;
+    rdfs:domain jdcrp:Image ;
+    rdfs:range xsd:anyURI .
+
+jdcrp:wccpNumber a rdf:Property ;
+    rdfs:label "wccp number" ;
+    rdfs:comment "The wiesbaden central collection point number of this cultural asset, if applicable" ;
+    rdfs:domain jdcrp:CulturalAsset ;
+    rdfs:range xsd:string .
+
+jdcrp:weight a rdf:Property ;
+    rdfs:label "weight" ;
+    rdfs:comment "The weight of this cultural asset, possibly as an unstructured string" ;
+    rdfs:domain jdcrp:CulturalAsset ;
+    rdfs:range xsd:string .
+
+jdcrp:acquisitionCost a rdf:Property ;
+    rdfs:label "acquisition cost" ;
+    rdfs:comment "The price the cultural asset was acquired for" ;
+    rdfs:domain jdcrp:AcquisitionEvent ;
+    rdfs:range xsd:string .
+
+jdcrp:collectedIn a rdf:Property ;
+    rdfs:label "collected in" ;
+    rdfs:comment "The collection of this cultural asset",
+        "The collection to which the cultural asset belonged at the time of deposition" ;
+    rdfs:domain jdcrp:CulturalAsset,
+        jdcrp:DepositionEvent ;
+    rdfs:range jdcrp:Collection .
+
+jdcrp:throughLegalEntity a rdf:Property ;
+    rdfs:label "through legal entity" ;
+    rdfs:comment "The legal entity who acted as an intermediary in the acquisition" ;
+    rdfs:domain jdcrp:AcquisitionEvent ;
+    rdfs:range jdcrp:LegalEntity .
+
+jdcrp:wikidataUri a rdf:Property ;
+    rdfs:label "wikidata URI" ;
+    rdfs:comment "The equivalent of this classification in Wikidata",
+        "The equivalent of this material in Wikidata" ;
+    rdfs:domain jdcrp:Classification,
+        jdcrp:Material .
+
+jdcrp:basedIn a rdf:Property ;
+    rdfs:label "based in" ;
+    rdfs:comment "The location entity in which this legal entity is primarily based" ;
+    rdfs:domain jdcrp:LegalEntity ;
+    rdfs:range jdcrp:Location .
+
+jdcrp:fromLegalEntity a rdf:Property ;
+    rdfs:label "from legal entity" ;
+    rdfs:comment "The legal entity from whom the cultural asset was acquired",
+        "The legal entity from whom the cultural asset was confiscated" ;
+    rdfs:domain jdcrp:AcquisitionEvent,
+        jdcrp:ConfiscationEvent ;
+    rdfs:range jdcrp:LegalEntity,
+        jdcrp:Person .
+
+jdcrp:archivalSourceDescription a rdf:Property ;
+    rdfs:label "archival source description" ;
+    rdfs:comment "Archival source where this legal entity is mentioned, e.g. the Bundesarchiv number",
+        "Textual info on where this cultural asset was exactly discovered, e.g. the Bundesarchiv number" ;
+    rdfs:domain jdcrp:CulturalAsset,
+        jdcrp:LegalEntity ;
+    rdfs:range xsd:string .
+
+jdcrp:byLegalEntity a rdf:Property ;
+    rdfs:label "by legal entity" ;
+    rdfs:comment "The legal entity that confiscated the cultural asset",
+        "The legal entity who acquired the cultural asset",
+        "The legal entity who was responsible for the transferration" ;
+    rdfs:domain jdcrp:AcquisitionEvent,
+        jdcrp:ConfiscationEvent,
+        jdcrp:TransferEvent ;
+    rdfs:range jdcrp:LegalEntity .
+
+jdcrp:fromCollection a rdf:Property ;
+    rdfs:label "from collection" ;
+    rdfs:comment "The collection from which the cultural asset was confiscated",
+        "The collection from which the cultural asset(s) originated" ;
+    rdfs:domain jdcrp:AcquisitionEvent,
+        jdcrp:ConfiscationEvent,
+        jdcrp:TransferEvent ;
+    rdfs:range jdcrp:Collection .
+
+jdcrp:atLocation a rdf:Property ;
+    rdfs:label "at location" ;
+    rdfs:comment "Location at which the cultural asset was deposited",
+        "The location at which the cultural asset was acquired",
+        "The location at which the cultural was confiscated",
+        "The location at which the cultural was restituted" ;
+    rdfs:domain jdcrp:AcquisitionEvent,
+        jdcrp:ConfiscationEvent,
+        jdcrp:DepositionEvent,
+        jdcrp:RestitutionEvent ;
+    rdfs:range jdcrp:Location .
+
+jdcrp:name a rdf:Property ;
+    rdfs:label "name" ;
+    rdfs:comment "The full name of this legal entity",
+        "The name of this classification",
+        "The name of this collection",
+        "The name of this material type" ;
+    rdfs:domain jdcrp:Classification,
+        jdcrp:Collection,
+        jdcrp:LegalEntity,
+        jdcrp:Material ;
+    rdfs:range xsd:string .
+
+jdcrp:affectedCulturalAsset a rdf:Property ;
+    rdfs:domain jdcrp:CulturalAssetEvent ;
+    rdfs:range jdcrp:CulturalAsset .
+
+jdcrp:relativeOrder a rdf:Property ;
+    rdfs:label "relative order" ;
+    rdfs:comment "The relative temporal ordering of the events of the cultural asset" ;
+    rdfs:domain jdcrp:CulturalAssetEvent ;
+    rdfs:range xsd:integer .
+
+jdcrp:withInvolvementOf a rdf:Property ;
+    rdfs:domain jdcrp:CulturalAssetEvent ;
+    rdfs:range jdcrp:Person ;
+    jdcrp:role xsd:string .
+
+jdcrp:date a rdf:Property ;
+    rdfs:label "date" ;
+    rdfs:comment "The date when this event happened, possibly as an unstructured date" ;
+    rdfs:domain jdcrp:Event ;
+    rdfs:range xsd:string .
+
+jdcrp:physicalDescription a rdf:Property ;
+    rdfs:label "physical description" ;
+    rdfs:comment "A textual description of the physical appearance of this cultural asset",
+        "The physical state of the cultural asset at the time of the event" ;
+    rdfs:domain jdcrp:CulturalAsset,
+        jdcrp:CulturalAssetEvent ;
+    rdfs:range xsd:string .
+
+jdcrp:structuredDate a rdf:Property ;
+    rdfs:label "structured date" ;
+    rdfs:comment "The date when this event happened, as a structured date" ;
+    rdfs:domain jdcrp:Event ;
+    rdfs:range xsd:dateTime .
+
+jdcrp:description a rdf:Property ;
+    rdfs:label "description" ;
+    rdfs:comment "A generic, textual description of this collection",
+        "A textual description of the location",
+        "A textual description of what happened" ;
+    rdfs:domain jdcrp:Collection,
+        jdcrp:Event,
+        jdcrp:Location ;
+    rdfs:range xsd:string .
+
+jdcrp:derivedFrom a rdf:Property ;
+    rdfs:domain jdcrp:Entity ;
+    rdfs:range jdcrp:Record .
+
+jdcrp:derivedUsingMapping a rdf:Property ;
+    rdfs:domain jdcrp:Entity ;
+    rdfs:range xsd:string .

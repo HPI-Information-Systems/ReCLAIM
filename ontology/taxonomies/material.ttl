@@ -1,0 +1,521 @@
+@prefix rdfs:     <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix wd:       <https://www.wikidata.org/wiki/> .
+@prefix jdcrp:    <https://graph.jdcrp.org/schema#> .
+@prefix Material: <https://graph.jdcrp.org/taxonomies/material#> .
+
+### paint
+Material:paint
+	a                 jdcrp:Material ;
+	jdcrp:name        "paint" ;
+	jdcrp:wikidataUri wd:Q174219 ;
+	jdcrp:subMaterialOf Material:unknown .
+
+Material:watercolor
+	a                   jdcrp:Material ;
+	jdcrp:name          "watercolor" ;
+	jdcrp:wikidataUri   wd:Q22915256 ;
+	jdcrp:subMaterialOf Material:paint .
+
+Material:pastel
+	a                   jdcrp:Material ;
+	jdcrp:name          "pastel" ;
+	jdcrp:wikidataUri   wd:Q189085 ;
+	jdcrp:subMaterialOf Material:paint .
+
+Material:oilPaint
+	a                   jdcrp:Material ;
+	jdcrp:name          "oil paint" ;
+	jdcrp:wikidataUri   wd:Q296955 ;
+	jdcrp:subMaterialOf Material:paint .
+
+Material:ink
+	a                   jdcrp:Material ;
+	jdcrp:name          "ink" ;
+	jdcrp:wikidataUri   wd:Q127418 ;
+	jdcrp:subMaterialOf Material:paint .
+
+Material:pen
+	a                   jdcrp:Material ;
+	jdcrp:name          "pen" ;
+	jdcrp:wikidataUri   wd:Q165447 ;
+	jdcrp:subMaterialOf Material:ink ;
+	jdcrp:subMaterialOf Material:drawingInstrument .
+
+### animal product
+Material:animalProduct
+	a                 jdcrp:Material ;
+	jdcrp:name        "animal product" ;
+	jdcrp:wikidataUri wd:Q629103 ;
+	jdcrp:subMaterialOf Material:unknown .
+
+Material:parchment
+	a                 jdcrp:Material ;
+	jdcrp:name        "parchment" ;
+	jdcrp:wikidataUri wd:Q226697 ;
+	jdcrp:subMaterialOf Material:animalProduct .
+
+Material:motherOfPearl
+	a                 jdcrp:Material ;
+	jdcrp:name        "mother of pearl" ;
+	jdcrp:wikidataUri wd:Q215865 ;
+	jdcrp:subMaterialOf Material:animalProduct .
+
+Material:skeletonPart
+	a                 jdcrp:Material ;
+	jdcrp:name        "skeleton part" ;
+	jdcrp:wikidataUri wd:Q7881 ;
+	jdcrp:subMaterialOf Material:animalProduct .
+
+Material:ivory
+	a                   jdcrp:Material ;
+	jdcrp:name          "ivory" ;
+	jdcrp:wikidataUri   wd:Q82001 ;
+	jdcrp:subMaterialOf Material:skeletonPart .
+
+Material:bone
+	a                   jdcrp:Material ;
+	jdcrp:name          "bone" ;
+	jdcrp:wikidataUri   wd:Q265868 ;
+	jdcrp:subMaterialOf Material:skeletonPart .
+
+Material:tortoiseShell
+	a                   jdcrp:Material ;
+	jdcrp:name          "tortoise shell" ;
+	jdcrp:wikidataUri   wd:Q2141546 ;
+	jdcrp:subMaterialOf Material:skeletonPart .
+
+### wood
+Material:wood
+	a                 jdcrp:Material ;
+	jdcrp:name        "wood" ;
+	jdcrp:wikidataUri wd:Q287 ;
+	jdcrp:subMaterialOf Material:unknown .
+
+Material:mahogany
+	a                   jdcrp:Material ;
+	jdcrp:name          "mahogany" ;
+	jdcrp:wikidataUri   wd:Q239788 ;
+	jdcrp:subMaterialOf Material:wood .
+
+Material:cherryTree
+	a                   jdcrp:Material ;
+	jdcrp:name          "cherry tree" ;
+	jdcrp:wikidataUri   wd:Q62474322 ;
+	jdcrp:subMaterialOf Material:wood .
+
+Material:lindenwood
+	a                   jdcrp:Material ;
+	jdcrp:name          "lindenwood" ;
+	jdcrp:wikidataUri   wd:Q575018 ;
+	jdcrp:subMaterialOf Material:wood .
+
+Material:oakwood
+	a                   jdcrp:Material ;
+	jdcrp:name          "oakwood" ;
+	jdcrp:wikidataUri   wd:Q2075708 ;
+	jdcrp:subMaterialOf Material:wood .
+
+Material:paintedWood
+	a                   jdcrp:Material ;
+	jdcrp:name          "painted wood" ;
+	jdcrp:subMaterialOf Material:wood, Material:paint .
+
+Material:oilOnWood
+	a                   jdcrp:Material ;
+	jdcrp:name          "oil on wood" ;
+	jdcrp:subMaterialOf Material:paintedWood, Material:oilPaint .
+
+Material:woodAndSteel
+	a                   jdcrp:Material ;
+	jdcrp:name          "wood and steel" ;
+	jdcrp:subMaterialOf Material:wood, Material:steel .
+
+
+### plaster
+Material:plaster
+	a                 jdcrp:Material ;
+	jdcrp:name        "plaster" ;
+	jdcrp:wikidataUri wd:Q274988 ;
+	jdcrp:subMaterialOf Material:unknown .
+
+Material:stucco
+	a                   jdcrp:Material ;
+	jdcrp:name          "stucco" ;
+	jdcrp:wikidataUri   wd:Q33526 ;
+	jdcrp:subMaterialOf Material:plaster .
+
+### carbon
+Material:carbon
+	a                   jdcrp:Material ;
+	jdcrp:name          "carbon" ;
+	jdcrp:wikidataUri   wd:Q623 ;
+	jdcrp:subMaterialOf Material:unknown .
+
+### mineral
+Material:mineral
+	a                 jdcrp:Material ;
+	jdcrp:name        "mineral" ;
+	jdcrp:wikidataUri wd:Q7946 ;
+	jdcrp:subMaterialOf Material:unknown .
+
+Material:coal
+	a                   jdcrp:Material ;
+	jdcrp:name          "coal" ;
+	jdcrp:wikidataUri   wd:Q24489 ;
+	jdcrp:subMaterialOf Material:carbon ;
+	jdcrp:subMaterialOf Material:mineral .
+
+Material:earthenware
+	a                   jdcrp:Material ;
+	jdcrp:name          "earthenware" ;
+	jdcrp:wikidataUri   wd:Q1377111 ;
+	jdcrp:subMaterialOf Material:mineral .
+
+Material:pottery
+	a                   jdcrp:Material ;
+	jdcrp:name          "pottery" ;
+	jdcrp:wikidataUri   wd:Q2442384 ;
+	jdcrp:subMaterialOf Material:earthenware .
+
+Material:bisque
+	a                   jdcrp:Material ;
+	jdcrp:name          "bisque" ;
+	jdcrp:wikidataUri   wd:Q12048097 ;
+	jdcrp:subMaterialOf Material:pottery .
+
+Material:clay
+	a                   jdcrp:Material ;
+	jdcrp:name          "clay" ;
+	jdcrp:wikidataUri   wd:Q42302 ;
+	jdcrp:subMaterialOf Material:mineral .
+
+Material:terracotta
+	a                   jdcrp:Material ;
+	jdcrp:name          "terracotta" ;
+	jdcrp:wikidataUri   wd:Q60424 ;
+	jdcrp:subMaterialOf Material:clay, Material:pottery .
+
+Material:crystal
+	a                   jdcrp:Material ;
+	jdcrp:name          "crystal" ;
+	jdcrp:wikidataUri   wd:Q43533 ;
+	jdcrp:subMaterialOf Material:mineral .
+
+Material:alabaster
+	a                   jdcrp:Material ;
+	jdcrp:name          "alabaster" ;
+	jdcrp:wikidataUri   wd:Q143447 ;
+	jdcrp:subMaterialOf Material:mineral .
+
+Material:stone
+	a                   jdcrp:Material ;
+	jdcrp:name          "stone" ;
+	jdcrp:wikidataUri   wd:Q22731 ;
+	jdcrp:subMaterialOf Material:mineral .
+
+Material:lapisLazuli
+	a                   jdcrp:Material ;
+	jdcrp:name          "lapis lazuli" ;
+	jdcrp:wikidataUri   wd:Q216798 ;
+	jdcrp:subMaterialOf Material:stone .
+
+Material:jade
+	a                   jdcrp:Material ;
+	jdcrp:name          "jade" ;
+	jdcrp:wikidataUri   wd:Q175089 ;
+	jdcrp:subMaterialOf Material:stone .
+
+Material:limestone
+	a                   jdcrp:Material ;
+	jdcrp:name          "limestone" ;
+	jdcrp:wikidataUri   wd:Q183670 ;
+	jdcrp:subMaterialOf Material:stone .
+
+Material:chalk
+	a                   jdcrp:Material ;
+	jdcrp:name          "chalk" ;
+	jdcrp:wikidataUri   wd:Q23757 ;
+	jdcrp:subMaterialOf Material:limestone .
+
+Material:sandstone
+	a                   jdcrp:Material ;
+	jdcrp:name          "sandstone" ;
+	jdcrp:wikidataUri   wd:Q13085 ;
+	jdcrp:subMaterialOf Material:stone .
+
+Material:marble
+	a                   jdcrp:Material ;
+	jdcrp:name          "marble" ;
+	jdcrp:wikidataUri   wd:Q40861 ;
+	jdcrp:subMaterialOf Material:stone .
+
+Material:whiteMarble
+	a                   jdcrp:Material ;
+	jdcrp:name          "white marble" ;
+	jdcrp:wikidataUri   wd:Q117052968 ;
+	jdcrp:subMaterialOf Material:marble .
+
+Material:ceramic
+	a                   jdcrp:Material ;
+	jdcrp:name          "ceramic" ;
+	jdcrp:wikidataUri   wd:Q45621 ;
+	jdcrp:subMaterialOf Material:mineral .
+
+Material:majolika
+	a                   jdcrp:Material ;
+	jdcrp:name          "majolika" ;
+	jdcrp:wikidataUri   wd:Q622753 ;
+	jdcrp:subMaterialOf Material:ceramic .
+
+Material:porcelain
+	a                   jdcrp:Material ;
+	jdcrp:name          "porcelain" ;
+	jdcrp:wikidataUri   wd:Q130693 ;
+	jdcrp:subMaterialOf Material:ceramic .
+
+Material:faience
+	a                   jdcrp:Material ;
+	jdcrp:name          "faience" ;
+	jdcrp:wikidataUri   wd:Q209671 ;
+	jdcrp:subMaterialOf Material:ceramic .
+
+
+### metal
+Material:metal
+	a                 jdcrp:Material ;
+	jdcrp:name        "metal" ;
+	jdcrp:wikidataUri wd:Q11426 ;
+	jdcrp:subMaterialOf Material:unknown .
+
+Material:steel
+	a                   jdcrp:Material ;
+	jdcrp:name          "steel" ;
+	jdcrp:wikidataUri   wd:Q11427 ;
+	jdcrp:subMaterialOf Material:metal .
+
+Material:brass
+	a                   jdcrp:Material ;
+	jdcrp:name          "brass" ;
+	jdcrp:wikidataUri   wd:Q39782 ;
+	jdcrp:subMaterialOf Material:metal .
+
+Material:gold
+	a                   jdcrp:Material ;
+	jdcrp:name          "gold" ;
+	jdcrp:wikidataUri   wd:Q897 ;
+	jdcrp:subMaterialOf Material:metal .
+
+Material:silver
+	a                   jdcrp:Material ;
+	jdcrp:name          "silver" ;
+	jdcrp:wikidataUri   wd:Q1090 ;
+	jdcrp:subMaterialOf Material:metal .
+
+Material:goldAndSilver
+	a                   jdcrp:Material ;
+	jdcrp:name          "gold and silver" ;
+	jdcrp:subMaterialOf Material:gold, Material:silver .
+
+Material:gilt
+	a                   jdcrp:Material ;
+	jdcrp:name          "gilt" ;
+	jdcrp:subMaterialOf Material:gold .
+
+Material:silverGilt
+	a                   jdcrp:Material ;
+	jdcrp:name          "silver gilt" ;
+	jdcrp:wikidataUri   wd:Q390584 ;
+	jdcrp:subMaterialOf Material:metal, Material:gilt .
+
+Material:iron
+	a                   jdcrp:Material ;
+	jdcrp:name          "iron" ;
+	jdcrp:wikidataUri   wd:Q677 ;
+	jdcrp:subMaterialOf Material:metal .
+
+Material:copper
+	a                   jdcrp:Material ;
+	jdcrp:name          "copper" ;
+	jdcrp:wikidataUri   wd:Q753 ;
+	jdcrp:subMaterialOf Material:metal .
+
+Material:copperGilt
+	a                   jdcrp:Material ;
+	jdcrp:name          "copper gilt" ;
+	jdcrp:subMaterialOf Material:copper, Material:gilt .
+
+Material:oilOnCopper
+	a                   jdcrp:Material ;
+	jdcrp:name          "oil on copper" ;
+	jdcrp:subMaterialOf Material:copper, Material:oilPaint .
+
+Material:bronze
+	a                   jdcrp:Material ;
+	jdcrp:name          "bronze" ;
+	jdcrp:wikidataUri   wd:Q34095 ;
+	jdcrp:subMaterialOf Material:metal .
+
+Material:bronzeGilt
+	a                   jdcrp:Material ;
+	jdcrp:name          "bronze gilt" ;
+	jdcrp:subMaterialOf Material:bronze, Material:gilt .
+
+Material:tin
+	a                   jdcrp:Material ;
+	jdcrp:name          "tin" ;
+	jdcrp:wikidataUri   wd:Q1096 ;
+	jdcrp:subMaterialOf Material:metal .
+
+Material:pewter
+	a                   jdcrp:Material ;
+	jdcrp:name          "pewter" ;
+	jdcrp:wikidataUri   wd:Q852372 ;
+	jdcrp:subMaterialOf Material:metal .
+
+### enamel
+Material:enamel
+	a                 jdcrp:Material ;
+	jdcrp:name        "enamel" ;
+	jdcrp:wikidataUri wd:Q79496108 ;
+	jdcrp:subMaterialOf Material:unknown .
+
+Material:enamelOnBronze
+	a                   jdcrp:Material ;
+	jdcrp:name          "enamel on bronze" ;
+	jdcrp:subMaterialOf Material:enamel, Material:bronze .
+
+### canvas
+Material:canvas
+	a                 jdcrp:Material ;
+	jdcrp:name        "canvas" ;
+	jdcrp:wikidataUri wd:Q4259259 ;
+	jdcrp:subMaterialOf Material:wovenCloth .
+
+Material:mountedCanvas
+	a                 jdcrp:Material ;
+	jdcrp:name        "mounted canvas" ;
+	jdcrp:wikidataUri wd:Q12321255 ;
+	jdcrp:subMaterialOf Material:wood, Material:canvas, Material:paint.
+
+
+Material:oilOnCanvas
+	a                   jdcrp:Material ;
+	jdcrp:name          "oil on canvas" ;
+	jdcrp:wikidataUri   wd:Q115654970 ;
+	jdcrp:subMaterialOf Material:mountedCanvas, Material:oilPaint .
+
+### panel
+Material:panel
+	a                 jdcrp:Material ;
+	jdcrp:name        "panel" ;
+	jdcrp:wikidataUri wd:Q1348059 ;
+	jdcrp:subMaterialOf Material:wood.
+
+Material:oilOnPanel
+	a                   jdcrp:Material ;
+	jdcrp:name          "oil on panel" ;
+	jdcrp:wikidataUri   wd:Q115655159 ;
+	jdcrp:subMaterialOf Material:panel, Material:oilPaint .
+
+### cardboard
+Material:cardboard
+	a                 jdcrp:Material ;
+	jdcrp:name        "cardboard" ;
+	jdcrp:wikidataUri wd:Q389782 .
+
+Material:oilOnCardboard
+	a                   jdcrp:Material ;
+	jdcrp:name          "oil on cardboard" ;
+	jdcrp:subMaterialOf Material:cardboard, Material:oilPaint .
+
+### paper
+Material:paper
+	a                 jdcrp:Material ;
+	jdcrp:name        "paper" ;
+	jdcrp:wikidataUri wd:Q11472 .
+
+Material:paperOnCardboard
+	a                   jdcrp:Material ;
+	jdcrp:name          "paper on cardboard" ;
+	jdcrp:subMaterialOf Material:paper, Material:oilOnCardboard .
+
+Material:pastelOnPaper
+	a                   jdcrp:Material ;
+	jdcrp:name          "pastel on paper" ;
+	jdcrp:subMaterialOf Material:pastel, Material:paper .
+
+Material:watercolorOnPaper
+	a                   jdcrp:Material ;
+	jdcrp:name          "watercolor on paper" ;
+	jdcrp:subMaterialOf Material:paper, Material:watercolor .
+
+Material:oilOnPaper
+	a                   jdcrp:Material ;
+	jdcrp:name          "oil on paper" ;
+	jdcrp:subMaterialOf Material:paper, Material:oilPaint .
+
+Material:pasteboard
+	a                   jdcrp:Material ;
+	jdcrp:name          "pasteboard" ;
+	jdcrp:wikidataUri   wd:Q99888913;
+	jdcrp:subMaterialOf Material:paper .
+
+### clothing material
+Material:clothingMaterial
+	a                 jdcrp:Material ;
+	jdcrp:name        "clothing material" ;
+	jdcrp:wikidataUri wd:Q5135573 ;
+	jdcrp:subMaterialOf Material:unknown .
+
+Material:wovenCloth
+	a                   jdcrp:Material ;
+	jdcrp:name          "woven cloth" ;
+	jdcrp:wikidataUri   wd:Q1314278 ;
+	jdcrp:subMaterialOf Material:clothingMaterial .
+
+Material:silk
+	a                   jdcrp:Material ;
+	jdcrp:name          "silk" ;
+	jdcrp:wikidataUri   wd:Q37681 ;
+	jdcrp:subMaterialOf Material:clothingMaterial ;
+	jdcrp:subMaterialOf Material:animalProduct .
+
+Material:wool
+	a                   jdcrp:Material ;
+	jdcrp:name          "wool" ;
+	jdcrp:wikidataUri   wd:Q42329 ;
+	jdcrp:subMaterialOf Material:clothingMaterial ;
+	jdcrp:subMaterialOf Material:animalProduct .
+
+Material:leather
+	a                   jdcrp:Material ;
+	jdcrp:name          "leather" ;
+	jdcrp:wikidataUri   wd:Q286 ;
+	jdcrp:subMaterialOf Material:clothingMaterial ;
+	jdcrp:subMaterialOf Material:animalProduct .
+
+### glass
+Material:glass
+	a                 jdcrp:Material ;
+	jdcrp:name        "glass" ;
+	jdcrp:wikidataUri wd:Q11469 ;
+	jdcrp:subMaterialOf Material:unknown .
+
+### drawing instrument
+Material:drawingInstrument
+	a                 jdcrp:Material ;
+	jdcrp:name        "drawing instrument" ;
+	jdcrp:wikidataUri wd:Q26972858 ;
+	jdcrp:subMaterialOf Material:unknown .
+
+Material:pencil
+	a                   jdcrp:Material ;
+	jdcrp:name          "pencil" ;
+	jdcrp:wikidataUri   wd:Q14674 ;
+	jdcrp:subMaterialOf Material:drawingInstrument .
+
+### unknown
+Material:unknown
+	a                 jdcrp:Material ;
+	jdcrp:name        "unknown" ;
+	jdcrp:wikidataUri wd:Q24238356 .

@@ -1,0 +1,60 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "pipeline": {
+    "build": {
+      "outputs": [".next/**", "!.next/cache/**"]
+    },
+    "install": {},
+    "type-check": {},
+    "@kunstgraph/frontend#generate:client": {
+      "cache": false,
+      "dependsOn": ["wait-on-server"]
+    },
+    "@kunstgraph/frontend#wait-on-server": {},
+    "@kunstgraph/frontend#dev": {
+      "dependsOn": ["wait-on-server", "generate:client"]
+    },
+    "@kunstgraph/backend#dev": {
+      "dependsOn": ["@kunstgraph/ontology#generate:schema"]
+    },
+    "@kunstgraph/ontology#generate:schema": {
+      "cache": false
+    },
+    "dev": {
+      "cache": false
+    },
+    "lint": {
+      "cache": false
+    },
+    "dx": {
+      "cache": false
+    },
+    "db:up": {
+      "cache": false,
+      "persistent": false
+    },
+    "db:down": {
+      "cache": false,
+      "persistent": false
+    },
+    "testdb:down": {
+      "cache": false,
+      "persistent": false
+    },
+    "test": {
+      "cache": false
+    },
+    "seed": {
+      "cache": false,
+      "dependsOn": ["db:up"]
+    },
+    "import:source": {
+      "cache": false,
+      "dependsOn": ["db:up"]
+    },
+    "test:e2e": {
+      "cache": false
+    }
+  },
+  "globalEnv": [".env"]
+}

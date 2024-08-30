@@ -1,0 +1,8 @@
+{
+  "name": "@kunstgraph/scraper",
+  "version": "0.0.0",
+  "scripts": {
+    "lint": "poetry run pylint .",
+    "install": "poetry install"
+  }
+}

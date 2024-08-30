@@ -1,0 +1,6 @@
+!.env.example
+poetry.toml
+
+.pytest_cache/
+
+/data

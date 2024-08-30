@@ -1,0 +1,36 @@
+services:
+  nextjs-frontend:
+    image: nextjs:latest
+    ports:
+      - "3000:3000"
+    environment:
+      - API_BASE_URL=http://fastapi-backend:8000
+    container_name: "nextjs-frontend"
+  database:
+    image: neo4j:5.11.0
+    ports:
+      - "7474:7474"
+      - "7687:7687"
+    volumes:
+      - neo4j_data:/data
+    environment:
+      - NEO4J_AUTH=neo4j/PASSWORD
+      - NEO4J_apoc_export_file_enabled=true
+      - NEO4J_apoc_import_file_enabled=true
+      - NEO4J_apoc_import_file_use__neo4j__config=true
+      - NEO4J_PLUGINS=["apoc", "n10s", "graph-data-science"]
+      - NEO4J_server_memory_pagecache_size=1G
+      - NEO4J_server_memory_heap_initial__size=3G
+      - NEO4J_server_memory_heap_max__size=4G
+    container_name: "kunstgraph-database"
+  fastapi-backend:
+    image: fastapi:latest
+    ports:
+      - "8000:8000"
+    environment:
+      - NEO4J_URI=neo4j://kunstgraph-database:7687
+      - NEO4J_USERNAME=neo4j
+      - NEO4J_PASSWORD=PASSWORD
+    container_name: "fastapi-backend"
+volumes:
+  neo4j_data:

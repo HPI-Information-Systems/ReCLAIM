@@ -1,0 +1,41 @@
+#!/bin/bash
+
+# Remove previous deployment, including persistent volumes for re-seeding
+rm -rf kunstgraph
+docker compose down -v
+
+# Clone from main
+git clone git@github.com:bp2023-fn1/kunstgraph.git
+
+# The backend requires the combined schema file
+# Copy the combined schema file to the backend
+cp ./kunstgraph/ontology/dist/combined_schema.ttl ./kunstgraph/backend/combined_schema.ttl
+# Build backend container
+docker build -t fastapi ./kunstgraph/backend
+# Remove temporary copy of schema file
+rm kunstgraph/backend/combined_schema.ttl
+
+# Create a temporary backend container instance to let the frontend fetch the OpenAPI schema and generate the API client
+docker run -d --name setup_fetch_openapi -e NEO4J_URI="bolt://localhost" -e NEO4J_USERNAME="" -e NEO4J_PASSWORD="" -p "8000:8000" fastapi:latest
+
+# Build frontend container
+docker build -t nextjs --network=host ./kunstgraph/frontend
+
+# Remove temporary backend container instance
+docker stop setup_fetch_openapi
+docker rm setup_fetch_openapi
+
+# Launch the containers in a detached session
+screen -d -m docker compose up
+echo  Containers are starting up now.
+echo  Waiting for the database to be ready...
+
+# Wait for neo4j to be started
+bash -c 'while [[ "$(curl -s -o /dev/null -w ''%{http_code}'' localhost:8000/health/)" != "200" ]]; do sleep 5; done'
+# Seed neo4j database
+echo  Starting to seed the database...
+cd kunstgraph/backend
+NEO4J_USERNAME=neo4j NEO4J_PASSWORD=PASSWORD NEO4J_URI=neo4j://localhost:7687 /root/.local/bin/poetry run python seed/run_etl_and_seed.py
+
+echo
+echo Deployment complete. To see status information, type screen -r

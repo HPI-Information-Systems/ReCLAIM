@@ -1,0 +1,50 @@
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix jdcrp: <https://graph.jdcrp.org/schema#> .
+
+jdcrp:AcquisitionEvent
+	a               rdfs:Class ;
+	rdfs:subClassOf jdcrp:CulturalAssetEvent .
+
+jdcrp:acquisitionCost
+	a            rdf:Property ;
+	rdfs:domain  jdcrp:AcquisitionEvent ;
+	rdfs:range   xsd:string ;
+	rdfs:label   "acquisition cost" ;
+	rdfs:comment "The price the cultural asset was acquired for" .
+
+jdcrp:atLocation
+	a            rdf:Property ;
+	rdfs:domain  jdcrp:AcquisitionEvent ;
+	rdfs:range   jdcrp:Location ;
+	rdfs:label   "at location" ;
+	rdfs:comment "The location at which the cultural asset was acquired" .
+
+jdcrp:fromCollection
+	a            rdf:Property ;
+	rdfs:domain  jdcrp:AcquisitionEvent ;
+	rdfs:range   jdcrp:Collection ;
+	rdfs:label   "from collection" ;
+	rdfs:comment "The collection from which the cultural asset(s) originated" .
+
+jdcrp:fromLegalEntity
+	a            rdf:Property ;
+	rdfs:domain  jdcrp:AcquisitionEvent ;
+	rdfs:range   jdcrp:LegalEntity ;
+	rdfs:label   "from legal entity" ;
+	rdfs:comment "The legal entity from whom the cultural asset was acquired" .
+
+jdcrp:byLegalEntity
+	a            rdf:Property ;
+	rdfs:domain  jdcrp:AcquisitionEvent ;
+	rdfs:range   jdcrp:LegalEntity ;
+	rdfs:label   "by legal entity" ;
+	rdfs:comment "The legal entity who acquired the cultural asset" .
+
+jdcrp:throughLegalEntity
+	a            rdf:Property ;
+	rdfs:domain  jdcrp:AcquisitionEvent ;
+	rdfs:range   jdcrp:LegalEntity ;
+	rdfs:label   "through legal entity" ;
+	rdfs:comment "The legal entity who acted as an intermediary in the acquisition" .

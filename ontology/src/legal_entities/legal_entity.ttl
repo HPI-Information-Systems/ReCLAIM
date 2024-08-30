@@ -1,0 +1,29 @@
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix jdcrp: <https://graph.jdcrp.org/schema#> .
+
+jdcrp:LegalEntity
+	a               rdfs:Class ;
+	rdfs:subClassOf jdcrp:Entity .
+
+jdcrp:name
+	a            rdf:Property ;
+	rdfs:domain  jdcrp:LegalEntity ;
+	rdfs:range   xsd:string ;
+	rdfs:label   "name" ;
+	rdfs:comment "The full name of this legal entity" .
+
+jdcrp:basedIn
+	a            rdf:Property ;
+	rdfs:domain  jdcrp:LegalEntity ;
+	rdfs:range   jdcrp:Location ;
+	rdfs:label   "based in" ;
+	rdfs:comment "The location entity in which this legal entity is primarily based" .
+
+jdcrp:archivalSourceDescription
+	a            rdf:Property ;
+	rdfs:domain  jdcrp:LegalEntity ;
+	rdfs:range   xsd:string;
+	rdfs:label   "archival source description" ;
+	rdfs:comment "Archival source where this legal entity is mentioned, e.g. the Bundesarchiv number" .

@@ -1,0 +1,19 @@
+{
+  "name": "@kunstgraph/backend",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "poetry run uvicorn backend.main:app --reload",
+    "lint": "poetry run pylint .",
+    "seed": "poetry run python3 -m seed.seed",
+    "import:source": "poetry run python3 -m seed.import_source",
+    "db:up": "docker-compose up -d dev_db || docker compose up -d dev_db",
+    "db:down": "docker-compose down || docker compose down",
+    "dx": "npm run db:up && npm run dev",
+    "install": "poetry install",
+    "test": "poetry run pytest ."
+  },
+  "devDependencies": {
+    "@kunstgraph/ontology": "^0.1.0"
+  },
+  "packageManager": "npm@10.2.3"
+}

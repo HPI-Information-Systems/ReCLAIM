@@ -1,0 +1,106 @@
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix jdcrp: <https://graph.jdcrp.org/schema#> .
+
+jdcrp:TransferEvent
+	a               rdfs:Class ;
+	rdfs:subClassOf jdcrp:CulturalAssetEvent .
+
+jdcrp:departureDate
+	a            rdf:Property ;
+	rdfs:domain  jdcrp:TransferEvent ;
+	rdfs:range   xsd:string ;
+	rdfs:label   "departure date" ;
+	rdfs:comment "The date the cultural asset was departured from the original location" .
+
+jdcrp:structuredDepartureDate
+	a            rdf:Property ;
+	rdfs:domain  jdcrp:TransferEvent ;
+	rdfs:range   xsd:string ;
+	rdfs:label   "structured departure date" ;
+	rdfs:comment "Structured version of departure date" .
+
+jdcrp:arrivalDate
+	a            rdf:Property ;
+	rdfs:domain  jdcrp:TransferEvent ;
+	rdfs:range   xsd:string ;
+	rdfs:label   "arrival date" ;
+	rdfs:comment "The date the cultural asset arrived at the destination" .
+
+jdcrp:structuredArrivalDate
+	a            rdf:Property ;
+	rdfs:domain  jdcrp:TransferEvent ;
+	rdfs:range   xsd:string ;
+	rdfs:label   "structured arrival date" ;
+	rdfs:comment "Structured version of arrival date" .
+
+jdcrp:physicalDescriptionBefore
+	a            rdf:Property ;
+	rdfs:domain  jdcrp:TransferEvent ;
+	rdfs:range   xsd:string ;
+	rdfs:label   "physical description before" ;
+	rdfs:comment "The physical description of the cultural asset before the transferration" .
+
+jdcrp:physicalDescriptionAfter
+	a            rdf:Property ;
+	rdfs:domain  jdcrp:TransferEvent ;
+	rdfs:range   xsd:string ;
+	rdfs:label   "physical description after" ;
+	rdfs:comment "The physical description of the cultural asset after the transferration" .
+
+jdcrp:fromLocation
+	a            rdf:Property ;
+	rdfs:domain  jdcrp:TransferEvent ;
+	rdfs:range   jdcrp:Location ;
+	rdfs:label   "from location" ;
+	rdfs:comment "The origin location from which the cultural asset(s) were transferred" .
+
+jdcrp:toLocation
+	a            rdf:Property ;
+	rdfs:domain  jdcrp:TransferEvent ;
+	rdfs:range   jdcrp:Location ;
+	rdfs:label   "to location" ;
+	rdfs:comment "The destination location to which the cultural asset(s) were transferred" .
+
+jdcrp:fromCollection
+	a            rdf:Property ;
+	rdfs:domain  jdcrp:TransferEvent ;
+	rdfs:range   jdcrp:Collection ;
+	rdfs:label   "from collection" ;
+	rdfs:comment "The collection from which the cultural asset(s) originated" .
+
+jdcrp:toCollection
+	a            rdf:Property ;
+	rdfs:domain  jdcrp:TransferEvent ;
+	rdfs:range   jdcrp:Collection ;
+	rdfs:label   "to collection" ;
+	rdfs:comment "The collection to which the cultural asset(s) were transferred" .
+
+jdcrp:byLegalEntity
+	a            rdf:Property ;
+	rdfs:domain  jdcrp:TransferEvent ;
+	rdfs:range   jdcrp:LegalEntity ;
+	rdfs:label   "by legal entity" ;
+	rdfs:comment "The legal entity who was responsible for the transferration" .
+
+jdcrp:identifiedBy
+	a            rdf:Property ;
+	rdfs:domain  jdcrp:TransferEvent ;
+	rdfs:range   jdcrp:LegalEntity ;
+	rdfs:label   "identified by" ;
+	rdfs:comment "The legal entities who were responsible for the identification of the cultural asset at destination" .
+
+jdcrp:possessorBefore
+	a            rdf:Property ;
+	rdfs:domain  jdcrp:TransferEvent ;
+	rdfs:range   jdcrp:LegalEntity ;
+	rdfs:label   "possessor before" ;
+	rdfs:comment "The legal entity who possessed the cultural asset before transferration" .
+
+jdcrp:possessorAfter
+	a            rdf:Property ;
+	rdfs:domain  jdcrp:TransferEvent ;
+	rdfs:range   jdcrp:LegalEntity ;
+	rdfs:label   "possessor after" ;
+	rdfs:comment "The legal entity who possessed the cultural asset after transferration" .

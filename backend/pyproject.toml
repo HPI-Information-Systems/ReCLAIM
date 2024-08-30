@@ -1,0 +1,25 @@
+[tool.poetry]
+name = "backend"
+version = "0.0.1"
+description = "The backend for HPI's 2023 Naumann Bachelor Project."
+authors = ["Bachelor Projekt Naumann <BP2023FN1@hpi.de>"]
+readme = "README.md"
+packages = [{include = "backend"}, {include = "test"}, {include = "seed"}]
+
+[tool.poetry.dependencies]
+python = "^3.12"
+fastapi = "^0.109.1"
+uvicorn = {extras = ["standard"], version = "^0.24.0.post1"}
+neo4j = "^5.14.1"
+python-dotenv = "^1.0.0"
+pydantic-settings = "^2.1.0"
+pre-commit = "^3.5.0"
+pytest = "^8.1.1"
+httpx = "^0.26.0"
+pylint = "^3.0.3"
+rdflib = "^7.0.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

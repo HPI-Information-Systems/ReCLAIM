@@ -1,0 +1,28 @@
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix jdcrp: <https://graph.jdcrp.org/schema#> .
+
+jdcrp:Classification
+	a               rdfs:Class ;
+	rdfs:subClassOf jdcrp:Entity .
+
+jdcrp:subClassificationOf
+	a 		  rdf:Property ;
+	rdfs:domain  jdcrp:Classification ;
+	rdfs:range   jdcrp:Classification ;
+	rdfs:label   "subClassificationOf" ;
+	rdfs:comment "The classification this one is inherited from" .
+
+jdcrp:name
+	a            rdf:Property ;
+	rdfs:domain  jdcrp:Classification ;
+	rdfs:range   xsd:string ;
+	rdfs:label   "name" ;
+	rdfs:comment "The name of this classification" .
+
+jdcrp:wikidataUri
+	a            rdf:Property ;
+	rdfs:domain  jdcrp:Classification ;
+	rdfs:label   "wikidata URI" ;
+	rdfs:comment "The equivalent of this classification in Wikidata" .

@@ -1,0 +1,9 @@
+{
+  "name": "@kunstgraph/ontology",
+  "version": "0.1.0",
+  "scripts": {
+    "lint": "poetry run pylint .",
+    "generate:schema": "poetry run python build.py",
+    "install": "poetry install"
+  }
+}

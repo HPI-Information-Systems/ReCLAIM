@@ -1,0 +1,96 @@
+@prefix ERRSourceClassification: <https://graph.jdcrp.org/sources/err/Classification#> .
+@prefix ERRSourceCollection: <https://graph.jdcrp.org/sources/err/Collection#> .
+@prefix ERRSourceCulturalAsset: <https://graph.jdcrp.org/sources/err/CulturalAsset#> .
+@prefix ERRSourcePerson: <https://graph.jdcrp.org/sources/err/Person#> .
+
+@prefix CanonicalClassification: <https://graph.jdcrp.org/canonical/Classification#> .
+@prefix CanonicalCollection: <https://graph.jdcrp.org/canonical/Collection#> .
+@prefix CanonicalCulturalAsset: <https://graph.jdcrp.org/canonical/CulturalAsset#> .
+@prefix CanonicalPerson: <https://graph.jdcrp.org/canonical/Person#> .
+
+@prefix jdcrp: <https://graph.jdcrp.org/schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+
+ERRSourceClassification:266 a jdcrp:SourceClassification ;
+    jdcrp:name "Judaica"^^xsd:string .
+
+CanonicalClassification:266_hXVyuC a jdcrp:CanonicalClassification ;
+    jdcrp:describedBy ERRSourceClassification:266 .
+
+
+ERRSourceClassification:267 a jdcrp:SourceClassification ;
+    jdcrp:name "Musical instruments"^^xsd:string .
+
+CanonicalClassification:267_rtfX2B a jdcrp:CanonicalClassification ;
+    jdcrp:describedBy ERRSourceClassification:267 .
+
+
+ERRSourceClassification:265 a jdcrp:SourceClassification ;
+    jdcrp:name "Books and manuscripts"^^xsd:string .
+
+CanonicalClassification:265_uzOs61 a jdcrp:CanonicalClassification ;
+    jdcrp:describedBy ERRSourceClassification:265 .
+
+
+ERRSourceClassification:250 a jdcrp:SourceClassification ;
+    jdcrp:name "Antiquities"^^xsd:string .
+
+CanonicalClassification:250_347XuM a jdcrp:CanonicalClassification ;
+    jdcrp:describedBy ERRSourceClassification:250 .
+
+
+ERRSourceClassification:248 a jdcrp:SourceClassification ;
+    jdcrp:name "Sculpture"^^xsd:string .
+
+CanonicalClassification:248_92BFr5 a jdcrp:CanonicalClassification ;
+    jdcrp:describedBy ERRSourceClassification:248 .
+
+
+ERRSourceClassification:247 a jdcrp:SourceClassification ;
+    jdcrp:name "Works on Paper"^^xsd:string .
+
+CanonicalClassification:247_De0bJ5 a jdcrp:CanonicalClassification ;
+    jdcrp:describedBy ERRSourceClassification:247 .
+
+
+ERRSourceClassification:246 a jdcrp:SourceClassification ;
+    jdcrp:name "Paintings"^^xsd:string .
+
+CanonicalClassification:246_Lpyq21 a jdcrp:CanonicalClassification ;
+    jdcrp:describedBy ERRSourceClassification:246 .
+
+
+ERRSourceClassification:249 a jdcrp:SourceClassification ;
+    jdcrp:name "Decorative Arts"^^xsd:string .
+
+CanonicalClassification:249_Agc88e a jdcrp:CanonicalClassification ;
+    jdcrp:describedBy ERRSourceClassification:249 .
+
+
+ERRSourceCulturalAsset:16405 a jdcrp:SourceCulturalAsset ;
+    jdcrp:archivalSource "RG 260 M1943 Reel 27 NARA; Bundesarchiv, B323/291 ; RA 8, RV 103, MAEE, Paris, France"^^xsd:string ;
+    jdcrp:classification ERRSourceClassification:249 ;
+    jdcrp:confiscatedFromCollection Collection:233 ;
+    jdcrp:confiscatedFromLegalEntity Person:119 ;
+    jdcrp:createdBy Person:16405_artist ;
+    jdcrp:errNumber "WP 2014\nAus Kiste Nr. WP 120"^^xsd:string ;
+    jdcrp:physicalDescription """
+        Auf vier Beinen, von denen die beiden vorderen brettartig und schräggestellt sind, Kastenartiger Aufbau mit abgeschrägten Vorderkanten.  \r
+        Die niedrigere Unterbau mit zwei Türflügeln vor zwei Reichen von (links vier, rechts drei) Schubkästen.  Der Oberbau wird von der herabklappbaren \r
+        Schreibplatte eingenommen, darüber ein die Breite des Möbels einehmender Schubkasten.  Oben Marmorplatte (Brèche d'Alep).\r
+        Auf den Türflügeln und der dem Unterbau entsprechend gegliederten Schreibplatte geschweiftes Rohmbenmuster auf hellem Holz; \r
+        in den Rohmbenflächen sitzen Rosetten. In der entsprechenden Feldern der Schmalseiten Sternenmuster.  \r
+        Auf der abgeschrägten Vorderkante ein Stab, um den sich spiralig ein Lorbeergewinde dreht.\r
+        Feuervergoldete Bronzebeschläge, vorherrschend in Form von horizontalen Leisten und Rahmungen der vier Flächen der Vorderseite und der zwei\r
+        b.w. H. 143 cm; Br. 95 cm; T. 41 cm sign.: L. BOUDIN und Innungestempel Louis XVI\r
+        Zustand Behandlung: Im September 1944 restauriert. Die Schreibplatte ist verschlossen, Schlüssel fehlt.\r
+        Flächen an jeder Schmalseite; and den schräggestellten vorderen Beinen eine rechteckige Platte, an der oberen Schublade ein Wellenbandfries, um die \r
+        abschlies[s]ende Marmorplatte eine dreiseitige Galerie in Hakenkreuzmustern."""^^xsd:string ;
+    jdcrp:postConfiscationHistoryDescription "This crate was at the Jeu de Paume in 1942."^^xsd:string ;
+    jdcrp:provenanceDescription "Vgl. Salverte S. 31 ff., Theunissen S. 14"^^xsd:string ;
+    jdcrp:title "Schreibschrank (secrétaire à abatant) Mahagoni, Marketerie in verschiedenfarbigen Hölzern, vergoldete Bronzebeschläge."^^xsd:string .
+
+CanonicalCulturalAsset:16405_2cEJGF a jdcrp:CanonicalCulturalAsset ;
+    jdcrp:describedBy ERRSourceCulturalAsset:16405 .
+
+

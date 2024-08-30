@@ -1,0 +1,43 @@
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix jdcrp: <https://graph.jdcrp.org/schema#> .
+
+jdcrp:DepositionEvent
+	a               rdfs:Class ;
+	rdfs:subClassOf jdcrp:CulturalAssetEvent .
+
+jdcrp:depotNumber
+	a            rdf:Property ;
+	rdfs:domain  jdcrp:DepositionEvent ;
+	rdfs:range   xsd:string ;
+	rdfs:label   "depot number" ;
+	rdfs:comment "The number of the depot the cultural asset was deposited in" .
+
+jdcrp:atLocation
+	a            rdf:Property ;
+	rdfs:domain  jdcrp:DepositionEvent ;
+	rdfs:range   jdcrp:Location ;
+	rdfs:label   "at location" ;
+	rdfs:comment "Location at which the cultural asset was deposited" .
+
+jdcrp:depositedBy
+	a            rdf:Property ;
+	rdfs:domain  jdcrp:DepositionEvent ;
+	rdfs:range   jdcrp:LegalEntity ;
+	rdfs:label   "deposited by" ;
+	rdfs:comment "The legal entity that deposited the cultural asset" .
+
+jdcrp:possessor
+	a            rdf:Property ;
+	rdfs:domain  jdcrp:DepositionEvent ;
+	rdfs:range   jdcrp:LegalEntity ;
+	rdfs:label   "possessor" ;
+	rdfs:comment "The legal that possessed the cultural asset at the time of deposition" .
+
+jdcrp:collectedIn
+	a            rdf:Property ;
+	rdfs:domain  jdcrp:DepositionEvent ;
+	rdfs:range   jdcrp:Collection ;
+	rdfs:label   "collected in" ;
+	rdfs:comment "The collection to which the cultural asset belonged at the time of deposition" .

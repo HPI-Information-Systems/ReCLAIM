@@ -1,0 +1,36 @@
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix jdcrp: <https://graph.jdcrp.org/schema#> .
+
+jdcrp:Collection
+	a               rdfs:Class ;
+	rdfs:subClassOf jdcrp:Entity .
+
+jdcrp:name
+	a            rdf:Property ;
+	rdfs:domain  jdcrp:Collection ;
+	rdfs:range   xsd:string ;
+	rdfs:label   "name" ;
+	rdfs:comment "The name of this collection" .
+
+jdcrp:abbreviation
+	a            rdf:Property ;
+	rdfs:domain  jdcrp:Collection ;
+	rdfs:range   xsd:string ;
+	rdfs:label   "abbreviation" ;
+	rdfs:comment "An abbreviation for this collection used in the context of the source" .
+
+jdcrp:description
+	a            rdf:Property ;
+	rdfs:domain  jdcrp:Collection ;
+	rdfs:range   xsd:string ;
+	rdfs:label   "description" ;
+	rdfs:comment "A generic, textual description of this collection" .
+
+jdcrp:ownedBy
+	a            rdf:Property ;
+	rdfs:domain  jdcrp:Collection ;
+	rdfs:range   jdcrp:Person;
+	rdfs:label   "ownedBy" ;
+	rdfs:comment "The owner of the collection" .

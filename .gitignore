@@ -1,0 +1,15 @@
+.DS_STORE
+node_modules/
+.turbo
+**/.env
+.idea/
+
+**/*.pyc
+
+**/__pycache__/
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
+data/pretrain_pairs.csv
+matching/data/labelled_data.csv

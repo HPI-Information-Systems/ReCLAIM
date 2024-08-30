@@ -1,0 +1,4 @@
+/data/*
+!/data/namespaces.ttl
+!/data/material.ttl
+!/data/classification.ttl

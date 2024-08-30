@@ -1,0 +1,32 @@
+#!/bin/bash
+
+# Remove previous deployment
+rm -rf kunstgraph
+docker compose down
+
+# Clone from main
+git clone git@github.com:bp2023-fn1/kunstgraph.git
+
+# The backend requires the combined schema file
+# Copy the combined schema file to the backend
+cp ./kunstgraph/ontology/dist/combined_schema.ttl ./kunstgraph/backend/combined_schema.ttl
+# Build backend container
+docker build -t fastapi ./kunstgraph/backend
+# Remove temporary copy of schema file
+rm kunstgraph/backend/combined_schema.ttl
+
+# Create a temporary backend container instance to let the frontend fetch the OpenAPI schema and generate the API client
+docker run -d --name setup_fetch_openapi -e NEO4J_URI="bolt://localhost" -e NEO4J_USERNAME="" -e NEO4J_PASSWORD="" -p "8000:8000" fastapi:latest
+
+# Build frontend container
+docker build -t nextjs --network=host ./kunstgraph/frontend
+
+# Remove temporary backend container instance
+docker stop setup_fetch_openapi
+docker rm setup_fetch_openapi
+
+# Launch the containers in a detached session
+screen -d -m docker compose up
+
+echo
+echo Deployment complete. Containers are starting up now. To see status information, type screen -r

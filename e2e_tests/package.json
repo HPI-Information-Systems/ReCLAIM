@@ -1,0 +1,17 @@
+{
+  "name": "@kunstgraph/e2e-tests",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "test:e2e": "start-server-and-test \"(cd .. && turbo generate:schema && turbo run dx --filter=@kunstgraph/frontend)\" http://localhost:3000 \"playwright test\"",
+    "test:e2e:ui": "start-server-and-test \"(cd .. && turbo generate:schema && turbo run dx --filter=@kunstgraph/frontend)\" http://localhost:3000 \"playwright test --ui\""
+  },
+  "dependencies": {
+    "start-server-and-test": "^2.0.5"
+  },
+  "devDependencies": {
+    "@kunstgraph/backend": "^1.0.0",
+    "@kunstgraph/frontend": "^0.1.0",
+    "@playwright/test": "^1.45.3"
+  }
+}

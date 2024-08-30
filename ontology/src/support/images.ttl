@@ -1,0 +1,18 @@
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix jdcrp: <https://graph.jdcrp.org/schema#> .
+
+jdcrp:Image
+	a               rdfs:Class ;
+	rdfs:subClassOf jdcrp:Entity .
+
+# This might change in the future to just specify an identifier, instead of an entire http url.
+# This way the domain/retrieval mechanism can be changed without having to update all the images in the db.
+
+jdcrp:url
+	a            rdf:Property ;
+	rdfs:domain  jdcrp:Image ;
+	rdfs:range   xsd:anyURI ;
+	rdfs:label   "url" ;
+	rdfs:comment "The url where this image can be fetched from" .
