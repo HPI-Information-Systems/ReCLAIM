@@ -1,7 +1,9 @@
 # ReCLAIM monorepo
-
 This monorepo contains all relevant code for the ReCLAIM platform.
 The repository is structured into multiple packages.
+
+### Demo Screencast
+https://github.com/user-attachments/assets/c64d3d37-0646-41c0-94b3-0b827a466b3b
 
 # Development
 
